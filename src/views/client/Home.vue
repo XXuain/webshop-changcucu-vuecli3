@@ -10,13 +10,13 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="<% publicPath %>/img/home/slide/slide-01.png" alt="First slide">
+            <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/img/home/slide/slide-01.png" alt="Second slide">
+            <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/img/home/slide/slide-01.png" alt="Third slide">
+            <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="Third slide">
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -107,7 +107,7 @@
         <!-- 長夾 -->
         <div class="row mb-4">
           <div class="col-md-6 pr-0">
-            <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/LW-01-4.jpg');">
+            <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/LW-01-4.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
                   <a href="#" class="display-3">零錢包長夾</a>
@@ -127,7 +127,7 @@
             </div>
           </div>
           <div class="col-md-4 pl-0">
-            <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/LW-01-2.jpg');">
+            <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/LW-01-2.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
                   <a href="#" class="display-3">零錢包長夾</a>
