@@ -10,24 +10,24 @@
                             <span></span>
                         </a>
                         <a href="#" class="navbar-icon-link">
-                            <img src="/img/icon-ig.svg" width="26" alt="">
+                            <img :src="`${baseUrl}/img/icon-ig.svg`" width="26" alt="">
                         </a>
                         <a href="#" class="navbar-icon-link">
-                            <img src="/img/icon-fb.svg" width="26" alt="">
+                            <img :src="`${baseUrl}/img/icon-fb.svg`" width="26" alt="">
                         </a>
                     </div>
                     <a class="navbar-logo" href="#">
-                        <img src="/img/logo.svg" alt="">
+                        <img :src="`${baseUrl}/img/logo.svg`" alt="">
                     </a>
                     <div class="navbar-text">
                         <a href="#">
-                            <img src="/img/icon-shopping-cart.svg" width="26" alt="">
+                            <img :src="`${baseUrl}/img/icon-shopping-cart.svg`" width="26" alt="">
                         </a>
                     </div>
                 </div>
                 <div class="navbar-footer">
                     <div class="navbar-search">
-                        <img src="/img/icon-search.svg" width="15" alt="">
+                        <img :src="`${baseUrl}/img/icon-search.svg`" width="15" alt="">
                     </div>
                     <div class="navbar-nav">
                         <a href="#" class="navbar-nav-link">商品列表</a>
@@ -49,8 +49,8 @@ export default {
     // name: "usernavbar",
     data() {
         return {
+            baseUrl: process.env.VUE_APP_IMGURL,
             open_nav: false,
-            isLoading: false,
         }
     },
     methods: {

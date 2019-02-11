@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="portfolio-add-to-cart"></div>
                             </div>
-                            <img src="/img/Purses/LongWallets/LW-01-1.png" class="img-fluid" alt="">
+                            <img :src="`${baseUrl}/img/Purses/LongWallets/LW-01-1.png`" class="img-fluid" alt="">
                         </div>
                     </div>
                     <div class="col-12 col-md">
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="portfolio-add-to-cart"></div>
                             </div>
-                            <img src="/img/Purses/LongWallets/LW-02-8.png" class="img-fluid" alt="">
+                            <img :src="`${baseUrl}/img/Purses/LongWallets/LW-02-8.png`" class="img-fluid" alt="">
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                                     <a href="#" class="portfolio-subname">LW-01-4</a>
                                 </div>
                             </div>
-                            <img src="/img/Purses/CoinPurse/CP-01-1.png" class="img-fluid" alt="">
+                            <img :src="`${baseUrl}/img/Purses/CoinPurse/CP-01-1.png`" class="img-fluid" alt="">
                         </div>
                     </div>
                     <div class="col-12 col-md">
@@ -98,7 +98,7 @@
                                     <a href="#" class="portfolio-subname">LW-01-4</a>
                                 </div>
                             </div>
-                            <img src="/img/Purses/CoinPurse/CP-02-2.png" class="img-fluid" alt="">
+                            <img :src="`${baseUrl}/img/Purses/CoinPurse/CP-02-2.png`" class="img-fluid" alt="">
                         </div>
                     </div>
                 </div>
@@ -112,5 +112,10 @@
 
     export default {
         name: "works",
+        data() {
+            return {
+                baseUrl: process.env.VUE_APP_IMGURL,
+            }
+        }
     };
 </script>

@@ -25,7 +25,7 @@
                     <tbody>
                         <tr>
                             <th scope="row">
-                                <img src="/img/Purses/LongWallets/LW-01-1.png" height="110" alt="">
+                                <img :src="`${baseUrl}/img/Purses/LongWallets/LW-01-1.png`" height="110" alt="">
                             </th>
                             <td>
                                 <h1 class="display-3">簡易長夾</h1>
@@ -141,6 +141,10 @@
 <script>
     /* eslint-disable */
     export default {
-
+        data() {
+            return {
+                baseUrl: process.env.VUE_APP_IMGURL,
+            }
+        },
     }
 </script>

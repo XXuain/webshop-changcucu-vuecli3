@@ -2,7 +2,7 @@
     <div>
         <footer>
             <div class="footer navbar">
-                <img src="/img/sub-logo.svg" width="158" alt="">
+                <img :src="`${baseUrl}/img/sub-logo.svg`" width="158" alt="">
                 <div class="d-flex mb-5">
                     <div class="navbar-nav">
                         <a href="#" class="navbar-nav-link">商品列表</a>
@@ -29,5 +29,10 @@
 <script>
 /* eslint-disable */
 export default {
+    data() {
+        return {
+            baseUrl: process.env.VUE_APP_IMGURL,
+        }
+    }
 };
 </script>

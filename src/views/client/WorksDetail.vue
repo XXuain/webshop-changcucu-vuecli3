@@ -9,7 +9,7 @@
 
                 <div class="row mb-4">
                     <div class="col-12 col-md-7">
-                        <img src="/img/Purses/LongWallets/LW-02-8.png" class="img-fluid" alt="">
+                        <img :src="`${baseUrl}/img/Purses/LongWallets/LW-02-8.png`" class="img-fluid" alt="">
                     </div>
                     <div class="col-12 col-md-5 align-self-center">
                         <div class="d-flex align-items-end mb-3">
@@ -51,6 +51,10 @@
     /* eslint-disable */
 
     export default {
-        name: "worksdetail",
+        data() {
+            return {
+                baseUrl: process.env.VUE_APP_IMGURL,
+            }
+        }
     };
 </script>
