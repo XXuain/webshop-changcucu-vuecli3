@@ -1,0 +1,250 @@
+// font
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600');
+//font-family: 'Open Sans', sans-serif;
+
+@import '~bootstrap/scss/functions';
+@import 'variables';
+@import "~bootstrap/scss/mixins";
+
+// @import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+// @import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+// @import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
+
+// customer
+@import 'style_components/sidebar';
+@import 'style_components/portfolio-hover';
+@import 'style_components/navbar';
+@import 'style_components/carousel';
+
+.wrapper {
+    padding: 0 80px;
+    background: $white;
+    overflow: hidden;
+}
+@media only screen and (max-width: 991px) and (min-width: 320px) {
+    .wrapper {
+        padding: 0;
+    }
+}
+
+section {
+    margin-top: 100px;
+}
+
+.slider {
+    margin-top: 0px;
+}
+
+.bg-cover {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.EN-font-family {
+    font-family: 'Open Sans', sans-serif;
+}
+
+// 標題 heading
+.heading {
+    margin-bottom: $spacer * 3;
+
+    h2 {
+        position: relative;
+        padding-bottom: 8px;
+
+        &::before {
+            position: absolute;
+            content: "";
+            width: 46px;
+            height: 2px;
+            background-color: #282828;
+            left: 0;
+            bottom: 0;
+        }
+    }
+
+    .subheading {
+        color: $gray-600;
+    }
+}
+
+// 項目 nav
+.item-filter {
+
+    // text-align: right;
+    a {
+        position: relative;
+        text-decoration: none;
+        color: $gray-900;
+        // font-family: 'Poppins', sans-serif;
+        font-size: $font-size-base;
+
+        // font-weight: 700;
+        // line-height: 1;
+        // text-transform: capitalize;
+        // margin-right: $spacer;
+        span {
+            position: absolute;
+            top: 3px;
+            right: 4px;
+            font-size: $font-size-base * .8;
+        }
+
+        &:hover:before {
+            content: "";
+            height: 2px;
+            width: 50px;
+            position: absolute;
+            display: inline-block;
+            background-color: #ff7a5e;
+            bottom: 0;
+            left: 0;
+        }
+    }
+}
+
+
+// 作品列表 work list
+.work-item-warp {
+    padding-left: $spacer * 3;
+    padding-right: $spacer * 3;
+    position: relative;
+
+    .item-title {
+        position: absolute;
+        top: 0;
+        right: -100px;
+        color: $gray-400;
+        transform-origin: 0 0;
+        transform: rotate(90deg);
+
+        h2 {
+            position: relative;
+            font-size: $font-size-base;
+
+            &::before {
+                content: '';
+                background: $gray-400;
+                position: absolute;
+                bottom: 50%;
+                right: $spacer * -9;
+                height: 1px;
+                width: $spacer * 8;
+            }
+        }
+    }
+
+    .item-img {
+        position: relative;
+
+        .item-mask {}
+    }
+}
+
+.work-item-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $spacer * 1.5;
+
+    .item-subname {
+        color: $gray-400;
+    }
+}
+
+
+
+// 客製服務 CUSTOM
+// .custom {
+//     margin-top: 0;
+//     background-image: url('/img/custom-bg.jpg');
+
+//     .custom-bg {
+//         background-color: rgba($color: #000000, $alpha: .8);
+//     }
+// }
+
+// instaShop
+// .instaShop {
+//     background-image: url('/img/bg-logo.svg');
+// }
+
+// table
+table {
+    white-space: nowrap;
+
+    th {
+        font-weight: $font-weight-normal;
+    }
+
+    td {
+        // text-align: center;
+        vertical-align: middle !important;
+    }
+}
+
+// footer
+.footer {
+    position: relative;
+    padding: $spacer * 5 0;
+    margin-top: $spacer * 5;
+
+    img {
+        position: absolute;
+        top: -22px;
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 35%;
+        height: 1.5px;
+        background-color: $gray-900;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 35%;
+        height: 1.5px;
+        background-color: $gray-900;
+    }
+}

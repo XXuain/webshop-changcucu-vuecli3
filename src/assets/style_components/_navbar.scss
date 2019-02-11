@@ -1,0 +1,157 @@
+/* ＊**************************
+ * 外層 空間位置
+*/
+.navbar {
+  padding-top: $spacer * 2;
+  padding-bottom: $spacer * 2;
+
+  .navbar-header,
+  .navbar-footer {
+    display: flex;
+  }
+
+  .navbar-header {
+    margin-bottom: $spacer * 2;
+  }
+
+  .navbar-icon,
+  .navbar-logo,
+  .navbar-text,
+  .navbar-search,
+  .navbar-nav,
+    {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    padding-right: $spacer * 2;
+    padding-left: $spacer * 2;
+
+    .navbar-footer {
+      display: none;
+    }
+  }
+}
+
+/* ＊**************************
+ * 內層 空間位置
+*/
+.navbar-mobil-btn {
+  display: none;
+}
+
+.navbar-icon-link {
+  margin-right: $spacer * .5;
+}
+
+.navbar-logo,
+.navbar-nav {
+  justify-content: center;
+}
+
+.navbar-text {
+  justify-content: flex-end;
+}
+
+@media (max-width: 991px) {
+
+  // navbar show
+  .navbar {
+    &.show {
+      // display: flex;  
+      position: fixed;
+      right: 0;
+      left: 0;
+      height: 100%;
+      z-index: 900;
+      background-color: rgba(255, 176, 118, 0.8);
+    }
+  }
+
+  // 主按鈕
+  .navbar-mobil-btn {
+    display: block;
+
+    span {
+      display: block;
+      height: 2px;
+      width: 30px;
+      background-color: $gray-900;
+      margin: 6px auto;
+      transition: all 0.6s ease;
+    }
+    // 打開樣式
+    &.open {
+      span:nth-child(1) {
+        transform: rotate(45deg);
+        transform-origin: 13%;
+      }
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      span:nth-child(3) {
+        transform: rotate(-45deg);
+        transform-origin: 13%;
+      }
+    }
+  }
+
+  
+}
+
+/* ＊**************************
+ * 樣式
+*/
+
+.navbar-logo img {
+  width: 110px;
+}
+
+.navbar-text-link,
+.navbar-nav-link {
+  text-decoration: none;
+  color: $gray-900;
+  transition: all .2s ease-in-out;
+
+  @include hover-focus {
+    text-decoration: none;
+    color: $danger;
+  }
+}
+
+.navbar-search {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    height: 1.5px;
+    background-color: $gray-900;
+  }
+
+  img {
+    margin-bottom: $spacer * .5;
+  }
+}
+
+.navbar-nav {
+  display: flex;
+
+  .navbar-nav-link {
+    margin-left: $spacer;
+    margin-right: $spacer;
+  }
+}
+
+@media (max-width: 991px) {
+    // logo
+    .navbar-logo img {
+      width: 80px;
+    }
+}
