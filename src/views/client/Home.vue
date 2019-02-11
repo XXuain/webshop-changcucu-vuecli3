@@ -60,7 +60,7 @@
                       <a href="#">Hobo Bag</a>
                     </div>
                   </div>
-                  <img src="<% publicPath %>/img/BarrelBag/HB-01-1.png" class="img-fluid" alt="">
+                  <img :src="`${baseUrl}/img/BarrelBag/HB-01-1.png`" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@
                       <a href="#">Hobo Bag</a>
                     </div>
                   </div>
-                  <img src="/img/BarrelBag/HB-01-2.png" class="img-fluid" alt="">
+                  <img :src="`${baseUrl}/img/BarrelBag/HB-01-2.png`" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -257,6 +257,10 @@
 
   export default {
     name: "home",
-    
+    data() {
+      return {
+        baseUrl: process.env.VUE_APP_IMGURL,
+      }
+    }
   };
 </script>
