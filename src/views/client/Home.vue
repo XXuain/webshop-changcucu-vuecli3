@@ -60,7 +60,7 @@
                       <a href="#">Hobo Bag</a>
                     </div>
                   </div>
-                  <img src="/img/BarrelBag/HB-01-1.png" class="img-fluid" alt="">
+                  <img src="<% publicPath %>/img/BarrelBag/HB-01-1.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
