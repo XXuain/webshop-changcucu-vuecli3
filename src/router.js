@@ -10,7 +10,7 @@ export default new Router({
   routes: [
     {
       path: '*',  // 不存在的頁面自動導到登入頁
-      redirect: 'login'
+      redirect: '/client/home'
     },
     /**
      * 後台 ---------------------------------------------------

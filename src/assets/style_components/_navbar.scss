@@ -1,3 +1,6 @@
+$navbar-hight: 176px;
+$navbar-show-bg: rgba($gray-200, .8);
+
 /* ＊**************************
  * 外層 空間位置
 */
@@ -5,25 +8,40 @@
   padding-top: $spacer * 2;
   padding-bottom: $spacer * 2;
 
+  &.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    // bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+
   .navbar-header,
   .navbar-footer {
     display: flex;
+    align-items: center;
   }
 
   .navbar-header {
-    margin-bottom: $spacer * 2;
+    margin-bottom: $spacer * 1.5;
   }
 
   .navbar-icon,
   .navbar-logo,
+  .navbar-car,
   .navbar-text,
   .navbar-search,
   .navbar-nav,
     {
     flex: 1;
     display: flex;
-    align-items: center;
   }
+}
+
+// 固定在頂部 main 要往下推navbar-hight
+.has-navbar-fixed-top {
+  padding-top: $navbar-hight;
 }
 
 @media (max-width: 991px) {
@@ -31,7 +49,13 @@
     padding-right: $spacer * 2;
     padding-left: $spacer * 2;
 
-    .navbar-footer {
+    .navbar-icon {
+      display: none;
+    }
+
+    .navbar-text,
+    .navbar-search,
+    .navbar-nav {
       display: none;
     }
   }
@@ -53,7 +77,7 @@
   justify-content: center;
 }
 
-.navbar-text {
+.navbar-text, .navbar-car {
   justify-content: flex-end;
 }
 
@@ -66,14 +90,33 @@
       position: fixed;
       right: 0;
       left: 0;
+      bottom: 0;
       height: 100%;
-      z-index: 900;
-      background-color: rgba(255, 176, 118, 0.8);
+      background-color: $navbar-show-bg;
+
+      .navbar-footer {
+        display: flex;
+        flex-direction: column-reverse;
+
+        .navbar-nav {
+          display: flex;
+          order: 1;
+          flex-direction: column-reverse;
+        }
+
+        .navbar-text,
+        .navbar-search,{
+          display: block;
+          width: 100%;
+        }
+      }
     }
   }
 
   // 主按鈕
   .navbar-mobil-btn {
+    flex: 1;
+    justify-content: flex-start;
     display: block;
 
     span {
@@ -81,18 +124,22 @@
       height: 2px;
       width: 30px;
       background-color: $gray-900;
-      margin: 6px auto;
-      transition: all 0.6s ease;
+      margin-top: 6px;
+      margin-bottom: 6px;
+      transition: all .3s ease-in-out;
     }
+
     // 打開樣式
     &.open {
       span:nth-child(1) {
         transform: rotate(45deg);
         transform-origin: 13%;
       }
+
       span:nth-child(2) {
         opacity: 0;
       }
+
       span:nth-child(3) {
         transform: rotate(-45deg);
         transform-origin: 13%;
@@ -100,7 +147,7 @@
     }
   }
 
-  
+
 }
 
 /* ＊**************************
@@ -117,6 +164,9 @@
   color: $gray-900;
   transition: all .2s ease-in-out;
 
+  margin-left: $spacer;
+  margin-right: $spacer;
+
   @include hover-focus {
     text-decoration: none;
     color: $danger;
@@ -126,7 +176,7 @@
 .navbar-search {
   position: relative;
 
-  &::after {
+  &::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -140,18 +190,27 @@
   }
 }
 
-.navbar-nav {
-  display: flex;
-
-  .navbar-nav-link {
-    margin-left: $spacer;
-    margin-right: $spacer;
-  }
-}
-
 @media (max-width: 991px) {
-    // logo
-    .navbar-logo img {
-      width: 80px;
+
+  // logo
+  .navbar-logo img {
+    width: 80px;
+  }
+
+  .navbar-footer {
+
+    .navbar-nav-link,
+    .navbar-text,
+      {
+      font-size: $font-size-lg;
+      padding-top: $spacer;
+      padding-bottom: $spacer;
     }
+
+    .navbar-search {
+      &::before {
+        width: 100%;
+      }
+    }
+  }
 }
