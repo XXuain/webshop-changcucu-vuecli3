@@ -2,7 +2,7 @@
     <div class="wrapper">
         <!-- navbar -->
         <ClientNavbar />
-        <main class="has-navbar-fixed-top">
+        <main class="">
             <router-view></router-view>
         </main>
         <!-- footer -->

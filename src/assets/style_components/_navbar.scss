@@ -1,5 +1,5 @@
-$navbar-hight: 176px;
-$navbar-show-bg: rgba($gray-200, .8);
+$navbar-hight: 220px;
+$navbar-show-bg: rgba($gray-200, .9);
 
 /* ＊**************************
  * 外層 空間位置
@@ -7,14 +7,15 @@ $navbar-show-bg: rgba($gray-200, .8);
 .navbar {
   padding-top: $spacer * 2;
   padding-bottom: $spacer * 2;
+  max-height: $navbar-hight;
 
   &.navbar-fixed-top {
     position: fixed;
     top: 0;
-    // bottom: 0;
     right: 0;
     left: 0;
     z-index: 1030;
+    padding-bottom: 0;
   }
 
   .navbar-header,
@@ -45,6 +46,9 @@ $navbar-show-bg: rgba($gray-200, .8);
 }
 
 @media (max-width: 991px) {
+  .has-navbar-fixed-top {
+    padding-top: $navbar-hight;
+  }
   .navbar {
     padding-right: $spacer * 2;
     padding-left: $spacer * 2;
@@ -81,8 +85,8 @@ $navbar-show-bg: rgba($gray-200, .8);
   justify-content: flex-end;
 }
 
-@media (max-width: 991px) {
 
+@media (max-width: 991px) {
   // navbar show
   .navbar {
     &.show {
@@ -91,7 +95,7 @@ $navbar-show-bg: rgba($gray-200, .8);
       right: 0;
       left: 0;
       bottom: 0;
-      height: 100%;
+      max-height: 100%;
       background-color: $navbar-show-bg;
 
       .navbar-footer {
@@ -153,6 +157,10 @@ $navbar-show-bg: rgba($gray-200, .8);
 /* ＊**************************
  * 樣式
 */
+
+.navbar {
+  background: $white;
+}
 
 .navbar-logo img {
   width: 110px;

@@ -83,21 +83,26 @@
 //
 // Left/right controls for nav
 //
+$w : 50px;
 
-.carousel-control-prev,
-.carousel-control-next {
+.carousel-control-next,
+.carousel-control-prev {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  
+  width: $w;
+  height: $w;
+  // padding: $spacer;
+  background: $gray-900;
+  // top: 0;
+  // bottom: 0;
   z-index: 1;
   // Use flex for alignment (1-3)
   display: flex; // 1. allow flex styles
   align-items: center; // 2. vertically center contents
   justify-content: center; // 3. horizontally center contents
-  width: $carousel-control-width;
   color: $carousel-control-color;
   text-align: center;
-  opacity: $carousel-control-opacity;
+  // opacity: $carousel-control-opacity;
   @include transition($carousel-control-transition);
 
   // Hover/focus state
@@ -108,16 +113,43 @@
     opacity: $carousel-control-hover-opacity;
   }
 }
+
+// .carousel-control-prev,
+// .carousel-control-next {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   z-index: 1;
+//   // Use flex for alignment (1-3)
+//   display: flex; // 1. allow flex styles
+//   align-items: center; // 2. vertically center contents
+//   justify-content: center; // 3. horizontally center contents
+//   width: $carousel-control-width;
+//   color: $carousel-control-color;
+//   text-align: center;
+//   opacity: $carousel-control-opacity;
+//   @include transition($carousel-control-transition);
+
+//   // Hover/focus state
+//   @include hover-focus {
+//     color: $carousel-control-color;
+//     text-decoration: none;
+//     outline: 0;
+//     opacity: $carousel-control-hover-opacity;
+//   }
+// }
 .carousel-control-prev {
-  left: 0;
+  bottom: $w * 1.5;
+  right: 0;
   @if $enable-gradients {
-    background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
+    // background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
   }
 }
 .carousel-control-next {
-  right: 0;
+  bottom: $w * 1.5;
+  right: -$w;
   @if $enable-gradients {
-    background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
+    // background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
   }
 }
 

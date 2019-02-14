@@ -310,7 +310,7 @@ $headings-color:              inherit !default;
 
 $display1-size:               2.5rem !default;
 $display2-size:               2rem !default;
-$display3-size:               1.5rem !default;
+$display3-size:               1.3rem !default;
 $display4-size:               1rem !default;
 
 $display1-weight:             400 !default;
@@ -469,7 +469,7 @@ $input-font-size-lg:                    $input-btn-font-size-lg !default;
 $input-line-height-lg:                  $input-btn-line-height-lg !default;
 
 $input-bg:                              $white !default;
-$input-disabled-bg:                     $gray-200 !default;
+$input-disabled-bg:                     $gray-300 !default;
 
 $input-color:                           $gray-700 !default;
 $input-border-color:                    $gray-900 !default;
@@ -914,9 +914,11 @@ $modal-dialog-margin-y-sm-up:       1.75rem !default;
 $modal-title-line-height:           $line-height-base !default;
 
 $modal-content-bg:                  $white !default;
-$modal-content-border-color:        rgba($black, .2) !default;
+// $modal-content-border-color:        rgba($black, .2) !default;
+$modal-content-border-color:        $gray-900 !default;
 $modal-content-border-width:        $border-width !default;
-$modal-content-border-radius:       $border-radius-lg !default;
+// $modal-content-border-radius:       $border-radius-lg !default;
+$modal-content-border-radius:       0 !default;
 $modal-content-box-shadow-xs:       0 .25rem .5rem rgba($black, .5) !default;
 $modal-content-box-shadow-sm-up:    0 .5rem 1rem rgba($black, .5) !default;
 
