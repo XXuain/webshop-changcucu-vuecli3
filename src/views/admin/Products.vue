@@ -3,7 +3,7 @@
         <loading :active.sync="isLoading"></loading>
 
         <div class="text-right mt-3">
-            <button class="btn btn-outline-primary" @click="openModal('new')">建立新的產品</button>
+            <button class="btn btn-dark" @click="openModal('new')"><i class="fas fa-plus mr-1"></i>建立新產品</button>
         </div>
         <table class="table mt-4">
             <thead>
@@ -11,16 +11,16 @@
                     <th>#</th>
                     <th width="120">分類</th>
                     <th>產品名稱</th>
-                    <th width="120">原價</th>
-                    <th width="120">售價</th>
-                    <th width="100">是否啟用</th>
-                    <th width="80">編輯</th>
+                    <th width="120" class="text-center">原價</th>
+                    <th width="120" class="text-center">售價</th>
+                    <th width="100" class="text-center">是否啟用</th>
+                    <th width="80" class="text-center">操作</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- <tr v-for="(item, key) in products" :key="key"> -->
-                <tr v-for="(item) in products" :key="item.id">
-                    <td></td>
+                <tr v-for="(item, key) in products" :key="key">
+                    <td>{{ key + 1 }}</td>
                     <td>{{ item.category }}</td>
                     <td>{{ item.title }}</td>
                     <td class="text-right">
@@ -29,13 +29,17 @@
                     <td class="text-right">
                         {{ item.price | currency }}
                     </td>
-                    <td>
-                        <span v-if="item.is_enabled == 1" class="text-success">啟用</span>
-                        <span v-else>停用</span>
+                    <td class="text-center">
+                        <span v-if="item.is_enabled == 1" class="text-success"><i class="fas fa-check"></i></span>
+                        <span v-else class="text-secondary"><i class="fas fa-ban"></i></span>
                     </td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-primary" @click="openModal('edit', item)">編輯</button>
-                        <button class="btn btn-sm btn-outline-primary" @click="openModal('delete', item)">刪除</button>
+                    <td class="text-center">
+                        <div class="btn icon-btn icon-btn-dark">
+                            <i class="fas fa-pencil-alt" @click="openModal('edit', item)"></i>
+                        </div>
+                        <div class="btn icon-btn icon-btn-danger">
+                            <i class="fas fa-times" @click="openModal('delete', item)"></i>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -184,8 +188,9 @@
         },
         methods: {
             getProducts(page = 1) {
-                console.log('getProducts(page) = ',page);
-                const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`;
+                console.log('getProducts(page) = ', page);
+                const api =
+                    `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`;
                 const vm = this;
                 vm.isLoading = true;
                 this.$http.get(api, vm.user).then((res) => {

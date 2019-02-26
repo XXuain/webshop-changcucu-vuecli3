@@ -128,7 +128,7 @@
     margin-top: $spacer;
     span {
         font-family: 'Open Sans', sans-serif;
-        font-size: $font-size-base * 1.5;
+        font-size: $font-size-base;
         font-weight: 600;
         &.light {
             color: $white;
@@ -185,13 +185,16 @@
         position: relative;
         width: 35px;
         height: 35px;
+        text-align: center;
+        padding: 6px 0;
+
         border: 2px solid $white;
         border-radius: 50%;
 
         &::before {
             content: '+';
             position: absolute;
-            top: 20%;
+            top: 18%;
             right: 25%;
             font-size: $font-size-base * 1.5;
             line-height: 1rem;

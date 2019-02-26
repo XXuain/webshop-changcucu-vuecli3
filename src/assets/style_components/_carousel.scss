@@ -83,14 +83,14 @@
 //
 // Left/right controls for nav
 //
-$w : 50px;
+$control-width : 50px;
 
 .carousel-control-next,
 .carousel-control-prev {
   position: absolute;
   
-  width: $w;
-  height: $w;
+  width: $control-width;
+  height: $control-width;
   // padding: $spacer;
   background: $gray-900;
   // top: 0;
@@ -139,15 +139,15 @@ $w : 50px;
 //   }
 // }
 .carousel-control-prev {
-  bottom: $w * 1.5;
+  bottom: $control-width * 1.5;
   right: 0;
   @if $enable-gradients {
     // background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
   }
 }
 .carousel-control-next {
-  bottom: $w * 1.5;
-  right: -$w;
+  bottom: $control-width * 1.5;
+  right: -$control-width;
   @if $enable-gradients {
     // background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
   }
@@ -177,16 +177,16 @@ $w : 50px;
 
 .carousel-indicators {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  left: -$carousel-indicator-width;
+  top: $control-width;
   z-index: 15;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding-left: 0; // override <ol> default
   // Use the .carousel-control's width as margin so we don't overlay those
-  margin-right: $carousel-control-width;
-  margin-left: $carousel-control-width;
+  // margin-right: $carousel-control-width;
+  // margin-left: $carousel-control-width;
   list-style: none;
 
   li {
@@ -194,22 +194,28 @@ $w : 50px;
     flex: 0 1 auto;
     width: $carousel-indicator-width;
     height: $carousel-indicator-height;
-    margin-right: $carousel-indicator-spacer;
-    margin-left: $carousel-indicator-spacer;
-    text-indent: -999px;
+    // margin-right: $carousel-indicator-spacer;
+    // margin-left: $carousel-indicator-spacer;
+    margin-top: $carousel-indicator-spacer * 1.5;
+    margin-bottom: $carousel-indicator-spacer * 1.5;
+    // text-indent: -999px;
     cursor: pointer;
-    background-color: $carousel-indicator-active-bg;
-    background-clip: padding-box;
+    background-color: $gray-900;
+    // background-clip: padding-box;
     // Use transparent borders to increase the hit area by 10px on top and bottom.
-    border-top: $carousel-indicator-hit-area-height solid transparent;
-    border-bottom: $carousel-indicator-hit-area-height solid transparent;
-    opacity: .5;
+    // border-top: $carousel-indicator-hit-area-height solid transparent;
+    // border-bottom: $carousel-indicator-hit-area-height solid transparent;
+    // opacity: .5;
+    // transition: width .5s ease-in-out;
     @include transition($carousel-indicator-transition);
   }
 
-  .active {
-    opacity: 1;
+  li.active {
+    width: $carousel-indicator-width * 1.5;
   }
+
+  // .active {
+  // }
 }
 
 

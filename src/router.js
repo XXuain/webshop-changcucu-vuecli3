@@ -47,13 +47,13 @@ export default new Router({
           component: () => import("./views/admin/Coupon.vue"),
           meta: { requiresAuth: true },
         },
-        // {
-        //   // 模擬訂單
-        //   path:'customerorder',
-        //   name: 'CustomerOrder',
-        //   component: () => import("./views/admin/CustomerOrder.vue"),
-        //   meta: { requiresAuth: true },
-        // },
+        {
+          // 模擬訂單
+          path:'customerorder',
+          name: 'CustomerOrder',
+          component: () => import("./views/admin/CustomerOrder.vue"),
+          meta: { requiresAuth: true },
+        },
       ]
     },
     // {

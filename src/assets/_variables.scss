@@ -1041,7 +1041,7 @@ $carousel-indicator-height:          3px !default;
 $carousel-indicator-hit-area-height: 10px !default;
 $carousel-indicator-spacer:          3px !default;
 $carousel-indicator-active-bg:       $white !default;
-$carousel-indicator-transition:      opacity .6s ease !default;
+$carousel-indicator-transition:      width .5s ease-in-out !default;
 
 $carousel-caption-width:             70% !default;
 $carousel-caption-color:             $white !default;

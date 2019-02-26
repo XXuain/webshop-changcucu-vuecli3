@@ -1,43 +1,46 @@
 <template>
     <div>
-        <header>
-            <nav class="navbar" :class="{ 'show' : open_nav }">
-                <div class="navbar-header">
-                    <a href="#" class="navbar-mobil-btn" :class="{ 'open' : open_nav }" @click="open_nav = !open_nav">
+        <header class="wrapper">
+            <nav class="client-navbar client-navbar-fixed-top" :class="{ 'show' : openNav }">
+                <div class="client-navbar-header">
+                    <a href="#" class="client-navbar-mobil-btn" :class="{ 'open' : openNav }" @click="openNav = !openNav">
                         <span></span>
                         <span></span>
                         <span></span>
                     </a>
-                    <div class="navbar-icon">
-                        <a href="#" class="navbar-icon-link">
+                    <div class="client-navbar-icon">
+                        <a href="#" class="client-navbar-icon-link">
                             <img :src="`${baseUrl}/img/icon-ig.svg`" width="26" alt="">
                         </a>
-                        <a href="#" class="navbar-icon-link">
+                        <a href="#" class="client-navbar-icon-link">
                             <img :src="`${baseUrl}/img/icon-fb.svg`" width="26" alt="">
                         </a>
                     </div>
-                    <router-link class="navbar-logo" to="home">
+                    <router-link class="client-navbar-logo" to="home">
                         <img :src="`${baseUrl}/img/logo.svg`" alt="">
                     </router-link>
-                    <div class="navbar-car">
-                        <router-link to="check_out">
+                    <div class="client-navbar-car">
+                        <button class="btn" data-toggle="modal" data-target="#cartModal">
                             <img :src="`${baseUrl}/img/icon-shopping-cart.svg`" width="26" alt="">
-                        </router-link>
+                        </button>
                     </div>
                 </div>
-                <div class="navbar-footer">
-                    <div class="navbar-search">
+                <div class="client-navbar-footer">
+                    <div class="client-navbar-search">
                         <img :src="`${baseUrl}/img/icon-search.svg`" width="15" alt="">
                     </div>
-                    <div class="navbar-nav">
-                        <router-link to="works" class="navbar-nav-link">商品列表</router-link>
-                        <a href="#" class="navbar-nav-link">訂製服務</a>
-                        <a href="#" class="navbar-nav-link">最新商品</a>
+                    <div class="client-navbar-nav">
+                        <router-link to="works" class="client-navbar-nav-link">商品列表</router-link>
+                        <a href="#" class="client-navbar-nav-link">訂製服務</a>
+                        <a href="#" class="client-navbar-nav-link">最新商品</a>
                     </div>
-                    <div class="navbar-text">
-                        <a href="#" class="navbar-text-link d-none d-lg-block mr-0" data-toggle="modal" data-target="#memberModal">登入</a>
+                    <div class="client-navbar-text">
+                        <a href="#" class="client-navbar-text-link d-none d-lg-block mr-0" data-toggle="modal"
+                            data-target="#memberModal">會員登入</a>
                         <a href="#" class="btn btn-block btn-outline-dark d-lg-none mb-3" data-toggle="modal"
-                            data-target="#memberModal">登入</a>
+                            data-target="#memberModal">會員登入</a>
+                        <router-link to="/login" class="client-navbar-text-link d-none d-lg-block mr-0">後台登入</router-link>
+                        <router-link to="/login" class="btn btn-block btn-outline-dark d-lg-none mb-3">後台登入</router-link>
                     </div>
                 </div>
             </nav>
@@ -69,8 +72,8 @@
                                 <label for="inputPassword" class="col-form-label">密碼 Password</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="inputPassword"
-                                    placeholder="請輸入會員密碼" disabled>
+                                <input type="password" class="form-control" id="inputPassword" placeholder="請輸入會員密碼"
+                                    disabled>
                             </div>
                         </div>
                         <div class="mt-3">
@@ -81,59 +84,117 @@
                 </div>
             </div>
         </div>
+
+        <!-- 購物車 Modal -->
+        <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content p-3">
+                    <div class="p-3">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title display-3 text-center">購物車</h5>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">品名</th>
+                                    <th scope="col" width="60" class="text-right">數量</th>
+                                    <th scope="col" width="100" class="text-right">金額</th>
+                                    <th scope="col" width="60" class="text-center">刪除</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, key) in cartData.carts" :key="key">
+                                    <td scope="row">{{ key + 1 }}</td>
+                                    <td>{{ item.product.title }}</td>
+                                    <td class="text-right">{{ item.qty }}</td>
+                                    <td class="text-right">{{ item.final_total | currency }}</td>
+                                    <td>
+                                        <div class="btn icon-btn icon-btn-danger">
+                                            <i class="fas fa-times" @click="removeCart(item.id)"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="mt-3">
+                            <router-link to="check_out" class="btn btn-block btn-dark">結帳去</router-link>
+                            <!-- <button type="buttom" class="btn btn-block btn-outline-dark">註冊</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
 <script>
     /* eslint-disable */
     export default {
-        // name: "usernavbar",
+        // name: "userclient-navbar",
         data() {
             return {
                 baseUrl: process.env.VUE_APP_IMGURL,
-                open_nav: false,
-                // 定义滚动条默认位置
+
+                // 樣式
+                openNav: false,
+
+                // 滾動調預設位置
                 scrollTop: null,
 
-                // 定义按钮默认状态
-                isScrollTop: false
+                // 按鈕預設狀態
+                isScrollTop: false,
+
+                // 購物車
+                cartData: {},
             }
         },
         mounted() {
-            window.addEventListener('scroll', this.handleScroll, true)
+            // 監聽滾動事件
+            // window.addEventListener('scroll', this.handleScroll, true)
         },
         methods: {
+            // 滾動
             handleScroll(x) {
                 let scrollTop =
                     document.documentElement.scrollTop;
                 console.log(scrollTop);
-            }
+            },
+            // 取得購物車
+            getCart() {
+                const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
+                const vm = this;
+                // vm.isLoading = true;
+                this.$http.get(api).then((res) => {
+                    // console.log(res.data);
+                    if (res.data.success) {
+                        console.log('getCart');
+                        // vm.isLoading = false;
+                        vm.cartData = res.data.data;
+                    }
+                })
+            },
+            // 刪除購物車品項
+            removeCart(id) {
+                const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${id}`;
+                const vm = this;
+                this.$http.delete(api).then((res) => {
+                    // console.log(res.data);
+                    if (res.data.success) {
+                        vm.getCart();
+                    }
+                })
+            },
+        },
+        created() {
+            this.getCart();
         },
         watch: {
 
         }
     };
-    // $(window).scroll(function () {
-    //                 const body = $('body');
-    //                 const nav = $('#nav');
-    //                 const img = $('nav img');
-
-    //                 function makeItFixed(x) {
-    //                     if ($(window).scrollTop() > x) {
-    //                         nav.addClass('fixed-top');
-    //                         img.attr('src', 'source/logo_black.png');
-    //                         img.attr('width', '80');
-    //                         body.css('padding-top', nav.outerHeight());
-    //                     } else {
-    //                         nav.removeClass('fixed-top');
-    //                         body.css('padding-top', '0');
-    //                         img.attr('src', 'source/logo_wite.png');
-    //                         img.attr('width', '100');
-    //                     }
-    //                 }
-
-    //                 if (nav.length > 0) {
-    //                     makeItFixed(nav.length);
-    //                 }
-    //             });
 </script>

@@ -1,8 +1,8 @@
 <template>
-    <div class="wrapper">
+    <div>
         <!-- navbar -->
         <ClientNavbar />
-        <main class="">
+        <main class="has-navbar-fixed-top">
             <router-view></router-view>
         </main>
         <!-- footer -->

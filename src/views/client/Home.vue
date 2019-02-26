@@ -1,37 +1,39 @@
 <template>
   <div>
     <!-- slider -->
-    <section class="slider">
-      <div id="homeSlider" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#homeSlider" data-slide-to="0" class="active"></li>
-          <li data-target="#homeSlider" data-slide-to="1"></li>
-          <li data-target="#homeSlider" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="First slide">
+    <section class="wrapper">
+      <div class="slider">
+        <div id="homeSlider" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#homeSlider" data-slide-to="0" class="active"></li>
+            <li data-target="#homeSlider" data-slide-to="1"></li>
+            <li data-target="#homeSlider" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="First slide">
+            </div>
+            <!-- <div class="carousel-item">
+              <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="Third slide">
+            </div> -->
           </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="Third slide">
-          </div>
+          <a class="carousel-control-prev" href="#homeSlider" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#homeSlider" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <a class="carousel-control-prev" href="#homeSlider" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#homeSlider" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
     </section>
 
     <!-- 最新作品 LATEST WORKS -->
-    <section>
+    <section class="wrapper wrapper-top">
       <div class="container">
         <!-- 標題 -->
         <div class="row heading heading-2">
@@ -47,8 +49,8 @@
           </div>
         </div>
         <div>
-          <div class="row mb-4">
-            <div class="col-12 col-md">
+          <div class="row">
+            <div class="col-12 col-md mb-4">
               <div class="border p-3">
                 <div class="portfolio-hover">
                   <div class="portfolio-hover-content content-center">
@@ -63,7 +65,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md">
+            <div class="col-12 col-md mb-4">
               <div class="border p-3">
                 <div class="portfolio-hover">
                   <div class="portfolio-hover-content content-center">
@@ -82,9 +84,9 @@
         </div>
       </div>
     </section>
-
+    
     <!-- 作品列表 WORKS LIST -->
-    <section class="bg-light py-5">
+    <section class="wrapper wrapper-top bg-light pt-5">
       <div class="container py-5">
         <!-- 標題 -->
         <div class="row heading">
@@ -97,15 +99,17 @@
           <div class="col-md-6 item-filter">
             <ul class="nav justify-content-end">
               <li class="nav-item item-filter">
-                <a class="nav-link active" href="#">全部<span>2</span></a>
+                <router-link to="works" class="nav-link">
+                  全部<span>2</span>
+                </router-link>
               </li>
             </ul>
           </div>
         </div>
 
         <!-- 長夾 -->
-        <div class="row mb-4">
-          <div class="col-md-6 pr-0">
+        <div class="row flex-column-reverse flex-md-row mb-4">
+          <div class="col-md-6 pr-md-0">
             <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/LW-01-4.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
@@ -115,9 +119,10 @@
                   <a href="#">LW-01-4</a>
                 </div>
               </div>
+              <img :src="`${baseUrl}/img/home/LW-01-4.jpg`" class="img-fluid d-block d-md-none" alt="">
             </div>
           </div>
-          <div class="col-md-2 px-0">
+          <div class="col-md-2 px-md-0 order-1 order-md-0">
             <div class="d-flex align-items-center h-100 bg-white py-5 pl-4">
               <div class="my-5">
                 <p class="mb-0"><small>長夾 ></small></p>
@@ -125,7 +130,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 pl-0">
+          <div class="col-md-4 pl-md-0">
             <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/LW-01-2.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
@@ -135,21 +140,22 @@
                   <a href="#">LW-01-4</a>
                 </div>
               </div>
+              <img :src="`${baseUrl}/img/home/LW-01-2.jpg`" class="img-fluid d-block d-md-none" alt="">
             </div>
           </div>
         </div>
 
         <!-- 零錢包 -->
-        <div class="row mb-4">
-          <div class="col-md-2 pr-0">
-            <div class="d-flex align-items-center h-100 bg-white py-5 pl-4">
+        <div class="row flex-column-reverse flex-md-row mb-4">
+          <div class="col-md-2 order-1 order-md-0 pr-md-0">
+            <div class="d-flex align-items-center h-100 bg-white py-md-5 pl-4">
               <div class="my-5">
                 <p><small>零錢包 ></small></p>
                 <h3 class="h5">Coin purse</h3>
               </div>
             </div>
           </div>
-          <div class="col-md-6 px-0">
+          <div class="col-md-6 px-md-0">
             <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/CP-01-1.jpg');">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
@@ -159,9 +165,10 @@
                   <a href="#">Hobo Bag</a>
                 </div>
               </div>
+              <img :src="`${baseUrl}/img/home/CP-01-1.jpg`" class="img-fluid d-block d-md-none" alt="">
             </div>
           </div>
-          <div class="col-md-4 pl-0">
+          <div class="col-md-4 pl-md-0">
             <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/CP-02-2.jpg');">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
@@ -171,13 +178,14 @@
                   <a href="#">Hobo Bag</a>
                 </div>
               </div>
+              <img :src="`${baseUrl}/img/home/CP-02-2.jpg`" class="img-fluid d-block d-md-none" alt="">
             </div>
           </div>
         </div>
 
         <!-- 錶帶 -->
-        <div class="row mb-4">
-          <div class="col-md-4 pr-0">
+        <div class="row flex-column-reverse flex-md-row mb-4">
+          <div class="col-md-4 pr-md-0">
             <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/WB-01-3.png');
                     background-position: top;">
               <div class="portfolio-hover-content content-center">
@@ -188,9 +196,10 @@
                   <a href="#">LW-01-4</a>
                 </div>
               </div>
+              <img :src="`${baseUrl}/img/home/WB-01-3.png`" class="img-fluid d-block d-md-none" alt="">
             </div>
           </div>
-          <div class="col-md-6 px-0">
+          <div class="col-md-6 px-md-0">
             <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/WB-01-7.png');
                     background-position: top;">
               <div class="portfolio-hover-content content-center">
@@ -201,10 +210,11 @@
                   <a href="#">LW-01-4</a>
                 </div>
               </div>
+              <img :src="`${baseUrl}/img/home/WB-01-7.png`" class="img-fluid d-block d-md-none" alt="">
             </div>
           </div>
-          <div class="col-md-2 pl-0">
-            <div class="d-flex align-items-center h-100 bg-white py-5 pl-4">
+          <div class="col-md-2 order-1 order-md-0 pl-md-0">
+            <div class="d-flex align-items-center h-100 bg-white py-md-5 pl-4">
               <div class="my-5">
                 <p class="mb-0"><small>錶帶 ></small></p>
                 <h3 class="h5">Watchband</h3>

@@ -23,7 +23,7 @@
 @import "~bootstrap/scss/input-group";
 @import "~bootstrap/scss/custom-forms";
 @import "~bootstrap/scss/nav";
-// @import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/navbar";
 @import "~bootstrap/scss/card";
 @import "~bootstrap/scss/breadcrumb";
 @import "~bootstrap/scss/pagination";
@@ -46,8 +46,10 @@
 // customer
 @import 'style_components/sidebar';
 @import 'style_components/portfolio-hover';
-@import 'style_components/navbar';
+@import 'style_components/client-navbar';
+@import 'style_components/footer';
 @import 'style_components/carousel';
+@import 'style_components/icon-btn';
 // @import 'style_components/modal';
 
 .wrapper {
@@ -55,14 +57,15 @@
     background: $white;
     overflow: hidden;
 }
+
+.wrapper-top {
+    margin-top: $spacer * 5;
+}
+
 @media only screen and (max-width: 991px) and (min-width: 320px) {
     .wrapper {
         padding: 0;
     }
-}
-
-section {
-    margin-top: 100px;
 }
 
 .slider {
@@ -172,7 +175,7 @@ section {
     .item-img {
         position: relative;
 
-        .item-mask {}
+        // .item-mask {}
     }
 }
 
@@ -214,38 +217,5 @@ table {
     td {
         // text-align: center;
         vertical-align: middle !important;
-    }
-}
-
-// footer
-.footer {
-    position: relative;
-    padding: $spacer * 5 0;
-    margin-top: $spacer * 5;
-
-    img {
-        position: absolute;
-        top: -22px;
-        right: 50%;
-        transform: translateX(50%);
-    }
-
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        width: 35%;
-        height: 1.5px;
-        background-color: $gray-900;
-    }
-
-    &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 35%;
-        height: 1.5px;
-        background-color: $gray-900;
     }
 }

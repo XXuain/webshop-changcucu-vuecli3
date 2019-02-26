@@ -289,7 +289,7 @@
                             }
                         })
                     } else {
-                        console.log('欄位不完整 ');
+                        console.log('欄位不完整');
                     }
                 })
             },

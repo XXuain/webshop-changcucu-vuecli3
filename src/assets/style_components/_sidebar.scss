@@ -19,7 +19,7 @@ body {
     left: 0;
     z-index: 100;
     /* Behind the navbar */
-    padding: 48px 0 0;
+    padding: 0 0 0 0;
     /* Height of navbar */
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
@@ -27,7 +27,8 @@ body {
 .sidebar-sticky {
     position: relative;
     top: 0;
-    height: calc(100vh - 48px);
+    // height: calc(100vh - 48px);
+    height: 100vh;
     padding-top: .5rem;
     overflow-x: hidden;
     overflow-y: auto;
@@ -60,6 +61,14 @@ body {
     color: inherit;
 }
 
+.sidebar-logo {
+    text-align: center;
+    padding: $spacer;
+    img {
+        width: 60px;
+    }
+}
+
 .sidebar-heading {
     font-size: .75rem;
     text-transform: uppercase;
@@ -78,18 +87,35 @@ body {
    * Navbar
    */
 
+$sidebar-wrap-width: 174px;
+
 .navbar-brand {
     padding-top: .75rem;
     padding-bottom: .75rem;
     font-size: 1rem;
-    background-color: rgba(0, 0, 0, .25);
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+    text-align: center;
 }
 
-.navbar .form-control {
-    padding: .75rem 1rem;
-    border-width: 0;
-    border-radius: 0;
+.has-sidebar-left {
+    margin-left: $sidebar-wrap-width;
+}
+
+.navbar {
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 96%;
+        height: 1px;
+        background-color: $gray-500;
+    }
+
+    .form-control {
+        padding: .75rem 1rem;
+        border-width: 0;
+        border-radius: 0;
+    }
 }
 
 .form-control-dark {
