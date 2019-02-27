@@ -1,6 +1,7 @@
 <template>
     <div>
         <!-- navbar -->
+        <Alert/>
         <ClientNavbar />
         <main class="has-navbar-fixed-top">
             <router-view></router-view>
@@ -13,12 +14,14 @@
   /* eslint-disable */
   import ClientNavbar from "@/components/ClientNavbar.vue";
   import ClientFooter from "@/components/ClientFooter.vue";
+  import Alert from "@/components/AlertMsg.vue"
 
   export default {
     name: "client",
     components: {
       ClientNavbar,
       ClientFooter,
+      Alert,
     }
   };
 </script>

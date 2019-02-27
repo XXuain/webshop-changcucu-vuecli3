@@ -60,9 +60,6 @@
             Pagination
         },
         methods: {
-            getProducts() {
-
-            },
             getOrders(page = 1) {
                 const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/orders?page=${page}`;
                 const vm = this;

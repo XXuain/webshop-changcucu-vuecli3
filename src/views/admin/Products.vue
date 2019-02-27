@@ -297,7 +297,7 @@
         },
         created() {
             this.getProducts();
-            // this.$bus.$emit('messsage:push', 'test msg', 'success');
+            this.$bus.$emit('messsage:push', 'test msg', 'success');
         }
     }
 </script>

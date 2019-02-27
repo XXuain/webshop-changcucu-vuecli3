@@ -206,7 +206,6 @@
             },
 
             addtoCart(id, qty = 1) {
-                console.log('++');
                 const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
                 const vm = this;
                 const cart = {
@@ -220,9 +219,7 @@
                     console.log(res.data);
                     if (res.data.success) {
                         console.log('成功加入購物車');
-                        // vm.status.loadingItem = '';
-                        // vm.getCart();
-                        // $('#productModal').modal('hide');
+                        this.$bus.$emit('messsage:push', res.data.message, 'dark');
                     }
                 })
             },
@@ -230,6 +227,7 @@
         created() {
             this.getProducts();
             // this.getCart();
+            this.$bus.$emit('messsage:push', 'test msg', 'success');
         }
     };
 </script>

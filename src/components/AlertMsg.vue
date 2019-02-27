@@ -19,6 +19,7 @@
                 //     message: '訊息內容',
                 //     status: 'danger',
                 //     timestamp: 123,
+                //     position: 'right'
                 //   }],
             };
         },
@@ -30,9 +31,10 @@
                     message,
                     status,
                     timestamp,
+                    position
                 });
                 // 移除自己
-                this.removeMessageWithTiming(timestamp);
+                // this.removeMessageWithTiming(timestamp);
             },
             // 點選叉叉觸發
             removeMessage(num) {
@@ -61,9 +63,9 @@
              * 外層用 $on('方法名稱', (內容, 狀態))
              * 內層用 $emit
              *  */
-            vm.$bus.$on('messsage:push', (message, status = 'warning') => {
+            vm.$bus.$on('messsage:push', (message, status = 'warning', position = 'alert-right') => {
                 // 並觸發
-                vm.updateMessage(message, status);
+                vm.updateMessage(message, status, position);
             });
             // vm.$bus.$emit('message:push');
         },
@@ -77,5 +79,12 @@
         top: 56px;
         right: 20px;
         z-index: 1100;
+    }
+    .alert-top {
+
+    }
+
+    .alert-right {
+        right: 20px;
     }
 </style>

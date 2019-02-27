@@ -37,7 +37,7 @@
                             <i class="fas fa-pencil-alt" @click="openModal(false, item)"></i>
                         </div>
                         <div class="btn icon-btn icon-btn-danger">
-                            <i class="fas fa-times" @click="deleteCoupon(item)"></i>
+                            <i class="fas fa-times" @click="deleteCoupon(item.id)"></i>
                         </div>
                     </td>
                 </tr>
@@ -184,11 +184,10 @@
                 const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${coupon_id}`;
                 const vm = this;
                 vm.isLoading = true;
-                this.$http.get(api).then((res) => {
+                this.$http.delete(api).then((res) => {
                     if (res.data.success) {
                         vm.isLoading = false;
-                        vm.coupons = res.data.coupons;
-                        $('#couponModel').modal('hide');
+                        vm.getCoupons();
                     }
                 })
             }

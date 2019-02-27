@@ -16,15 +16,20 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col" width="60" class="text-center">刪除</th>
                             <th scope="col" width="120">圖示</th>
                             <th scope="col">品名</th>
                             <th scope="col" width="100" class="text-right">數量</th>
                             <th scope="col" width="60" class="text-right">金額</th>
-                            <th scope="col" width="60" class="text-center">刪除</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(item, key) in cartData.carts" :key="key">
+                            <td>
+                                <div class="btn icon-btn icon-btn-danger">
+                                    <i class="fas fa-times" @click="removeCart(item.id)"></i>
+                                </div>
+                            </td>
                             <td scope="row">
                                 <!-- <img :src="`${baseUrl}/img/Purses/LongWallets/LW-01-1.png`" class="img-fluid" alt=""> -->
                                 <img :src="`${ item.product.imageUrl }`" class="img-fluid" alt="">
@@ -50,41 +55,38 @@
                                     <span class="dark">{{ item.product.price | currency }}</span>
                                 </div>
                             </td>
-                            <td>
-                                <div class="btn icon-btn icon-btn-danger">
-                                    <i class="fas fa-times" @click="removeCart(item.id)"></i>
-                                </div>
-                            </td>
                         </tr>
 
                         <!-- 折價券 -->
                         <tr>
+                            <td></td>
                             <td>使用折價券</td>
                             <td colspan="2">
                                 <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="請輸入折價券號碼" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" placeholder="請輸入折價券號碼" v-model="coupon_code">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-dark" type="button" @click="addCouponCode">套用優惠碼</button>
+                                        <button class="btn btn-outline-dark" type="button" @click="addCouponCode">套用</button>
                                     </div>
                                 </div>
                             </td>
                             <td align="right">
-                                <div class="portfolio-price mb-3" v-if="cartData.final_total !== cartData.total">
-                                    <span class="dark">{{ cartData.final_total }}</span>
+                                <div class="portfolio-price mb-3">
+                                    <span class="text-danger" v-if="cartData.final_total !== cartData.total">- {{
+                                        cartData.total - cartData.final_total | currency }}</span>
+                                    <span class="text-danger" v-else>- 0</span>
                                 </div>
                             </td>
-                            <td></td>
                         </tr>
                         <tr>
+                            <td></td>
                             <td colspan="3">總計</td>
                             <td align="right">
                                 <div class="portfolio-price mb-3">
-                                    <span class="dark">{{ cartData.total | currency }}</span>
-                                    <!-- <span class="oringin-price">NT$4,800</span> -->
+                                    <span class="text-danger" v-if="cartData.final_total !== cartData.total">{{
+                                        cartData.final_total | currency }}</span>
+                                    <span class="text-danger" v-else>{{ cartData.total | currency }}</span>
                                 </div>
                             </td>
-                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -100,32 +102,47 @@
                         <h2 class="h2 EN-font-family">INFORMATION</h2>
                     </div>
                 </div>
-                
+
                 <!-- 表單 -->
-                <form>
+                <form @submit.prevent="createOrder">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">姓名 Name</label>
-                            <input type="text" class="form-control" id="inputEmail4" placeholder="請輸入姓名">
+                            <label for="username">姓名 Name</label>
+                            <input type="text" class="form-control" id="username" placeholder="請輸入姓名"
+                                v-model="form.user.name"
+                                v-validate="'required'"
+                                :class="{'is-invalid' : errors.has('name') }">
+                            <span class="text-danger" v-if="errors.has('name')">必須輸入姓名</span>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPhone">電話 Phone</label>
-                            <input type="text" class="form-control" id="inputPhone" placeholder="請輸入電話">
+                            <label for="usertel">電話 Phone</label>
+                            <input type="text" class="form-control" id="usertel" placeholder="請輸入電話"
+                                v-model="form.user.tel">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">信箱 Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="請輸入信箱">
+                            <label for="useremail">信箱 Email</label>
+                            <input type="email" class="form-control" id="useremail" placeholder="請輸入信箱"
+                                v-model="form.user.email"
+                                v-validate="'required|email'"
+                                :class="{'is-invalid' : errors.has('email') }">
+                            <span class="text-danger">{{ errors.first('email') }}</span>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">密碼 Password</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="請輸入密碼">
+                            <label for="userpassword">會員密碼 Password</label>
+                            <input type="password" class="form-control" id="userpassword" placeholder="請輸入密碼" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputAddress">地址 Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="請輸入地址">
+                        <label for="useraddress">地址 Address</label>
+                        <input type="text" class="form-control" id="useraddress" placeholder="請輸入地址"
+                            v-model="form.user.address">
+                    </div>
+                    <div class="form-group">
+                        <label for="usermsg">留言</label>
+                        <textarea name="" id="usermsg" class="form-control" cols="30" rows="2"
+                            v-model="form.message"></textarea>
                     </div>
                     <div class="form-group">
                         <div class="form-check">
@@ -136,7 +153,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-dark px-5">送出</button>
+                        <button class="btn btn-dark px-5">建立訂單</button>
                     </div>
                 </form>
             </div>
@@ -153,6 +170,18 @@
 
                 // 購物車
                 cartData: {},
+                coupon_code: '',
+
+                // 客戶資訊
+                form: {
+                    "user": {
+                        "name": "",
+                        "email": "",
+                        "tel": "",
+                        "address": ""
+                    },
+                    message: ""
+                },
             }
         },
         methods: {
@@ -194,6 +223,27 @@
                     console.log('優惠券狀態', res.data);
                     if (res.data.success) {
                         vm.getCart();
+                    }
+                })
+            },
+
+            // 建立訂單
+            createOrder() {
+                const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order`;
+                const vm = this;
+                const order = vm.form;
+                this.$validator.validate().then((result) => {
+                    if (result) {
+                        this.$http.post(api, {
+                            data: order
+                        }).then((res) => {
+                            console.log(res);
+                            if (res.data.success) {
+                                console.log('訂單已成立', res.data);
+                            }
+                        })
+                    } else {
+                        console.log('欄位不完整');
                     }
                 })
             },

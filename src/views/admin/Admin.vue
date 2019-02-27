@@ -1,10 +1,10 @@
 <template>
     <div>
-        <Navbar></Navbar>
-        <Alert></Alert>
+        <AdminNavbar/>
+        <Alert/>
         <div class="container-fluid">
             <div class="row">
-                <Sidebar></Sidebar>
+                <AdminSidebar/>
                 <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
                     <!-- 切換不同元件 -->
                     <router-view></router-view>
@@ -15,15 +15,15 @@
 </template>
 <script>
 /* eslint-disable */ 
-import Sidebar from "@/components/AdminSidebar.vue";
-import Navbar from "@/components/AdminNavbar.vue";
+import AdminSidebar from "@/components/AdminSidebar.vue";
+import AdminNavbar from "@/components/AdminNavbar.vue";
 import Alert from "@/components/AlertMsg.vue"
 
 export default {
     name: "admin",
     components: {
-        Sidebar,
-        Navbar,
+        AdminSidebar,
+        AdminNavbar,
         Alert,
     },
 };

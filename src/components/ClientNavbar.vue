@@ -121,8 +121,7 @@
                             </tbody>
                         </table>
                         <div class="mt-3">
-                            <router-link to="check_out" class="btn btn-block btn-dark">結帳去</router-link>
-                            <!-- <button type="buttom" class="btn btn-block btn-outline-dark">註冊</button> -->
+                            <button type="button" class="btn btn-block btn-dark" @click="goCkeck">結帳去</button>
                         </div>
                     </div>
                 </div>
@@ -134,6 +133,8 @@
 
 <script>
     /* eslint-disable */
+    import $ from 'jquery';
+
     export default {
         // name: "userclient-navbar",
         data() {
@@ -164,6 +165,7 @@
                     document.documentElement.scrollTop;
                 console.log(scrollTop);
             },
+
             // 取得購物車
             getCart() {
                 const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
@@ -189,6 +191,12 @@
                     }
                 })
             },
+
+            // 結帳去
+            goCkeck() {
+                this.$router.push('/client/check_out');
+                $('#cartModal').modal('hide');
+            }
         },
         created() {
             this.getCart();
