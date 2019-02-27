@@ -172,15 +172,15 @@
     export default {
         data() {
             return {
-                products: [],
-                tempProduct: {},
-                pagination: {},
                 type: '',
                 // isNew: false,
                 isLoading: false,
                 status: {
                     fileUpLoading: false,
-                }
+                },
+                products: [],
+                tempProduct: {},
+                pagination: {},
             }
         },
         components: {
@@ -188,9 +188,7 @@
         },
         methods: {
             getProducts(page = 1) {
-                console.log('getProducts(page) = ', page);
-                const api =
-                    `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`;
+                const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`;
                 const vm = this;
                 vm.isLoading = true;
                 this.$http.get(api, vm.user).then((res) => {
@@ -297,7 +295,6 @@
         },
         created() {
             this.getProducts();
-            this.$bus.$emit('messsage:push', 'test msg', 'success');
         }
     }
 </script>

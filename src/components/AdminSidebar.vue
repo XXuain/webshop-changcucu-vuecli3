@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <nav class="col-md-3 col-lg-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
                 <div class="sidebar-logo">
                     <img :src="`${baseUrl}/img/logo.svg`" alt="">

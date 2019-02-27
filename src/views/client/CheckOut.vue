@@ -232,20 +232,24 @@
                 const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order`;
                 const vm = this;
                 const order = vm.form;
-                this.$validator.validate().then((result) => {
-                    if (result) {
-                        this.$http.post(api, {
-                            data: order
-                        }).then((res) => {
-                            console.log(res);
-                            if (res.data.success) {
-                                console.log('訂單已成立', res.data);
-                            }
-                        })
-                    } else {
-                        console.log('欄位不完整');
-                    }
-                })
+                vm.isLoading = true;
+                this.$http.post(api, { data:order }).then((res)=>{
+                    console.log('訂單已建立', res);
+                });
+                // this.$validator.validate().then((result) => {
+                //     if (result) {
+                //         this.$http.post(api, {
+                //             data: order
+                //         }).then((res) => {
+                //             console.log(res);
+                //             if (res.data.success) {
+                //                 console.log('訂單已成立', res.data);
+                //             }
+                //         })
+                //     } else {
+                //         console.log('欄位不完整');
+                //     }
+                // })
             },
         },
         created() {

@@ -9,12 +9,9 @@
       <input type="password" id="inputPassword" class="form-control" v-model="user.password" placeholder="Password" required>
 
       <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
+        <label><input type="checkbox" value="remember-me" class="mr-1">記住我</label>
       </div>
-      <button class="btn btn-block btn-dark" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+      <button class="btn btn-block btn-dark" type="submit">登入</button>
     </form>
   </div>
 </template>

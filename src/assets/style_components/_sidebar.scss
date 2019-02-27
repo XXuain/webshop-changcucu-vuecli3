@@ -87,7 +87,7 @@ body {
    * Navbar
    */
 
-$sidebar-wrap-width: 174px;
+$sidebar-wrap-width: 200px;
 
 .navbar-brand {
     padding-top: .75rem;
@@ -96,9 +96,9 @@ $sidebar-wrap-width: 174px;
     text-align: center;
 }
 
-.has-sidebar-left {
-    margin-left: $sidebar-wrap-width;
-}
+// .has-sidebar-left {
+//     margin-left: $sidebar-wrap-width;
+// }
 
 .navbar {
     position: relative;

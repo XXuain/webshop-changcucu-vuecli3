@@ -31,7 +31,7 @@
                     message,
                     status,
                     timestamp,
-                    position
+                    // position
                 });
                 // 移除自己
                 // this.removeMessageWithTiming(timestamp);
@@ -63,9 +63,9 @@
              * 外層用 $on('方法名稱', (內容, 狀態))
              * 內層用 $emit
              *  */
-            vm.$bus.$on('messsage:push', (message, status = 'warning', position = 'alert-right') => {
+            vm.$bus.$on('messsage:push', (message, status = 'warning') => {
                 // 並觸發
-                vm.updateMessage(message, status, position);
+                vm.updateMessage(message, status);
             });
             // vm.$bus.$emit('message:push');
         },
