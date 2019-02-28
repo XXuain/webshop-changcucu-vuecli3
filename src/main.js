@@ -15,6 +15,7 @@ import App from "./App.vue";
 import router from "./router";
 import './bus';
 import currencyFilter from "./filters/currency";
+import dateFilter from "./filters/date";
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
@@ -27,6 +28,7 @@ Vue.component('Loading', Loading);
 
 // 啟用全域filters
 Vue.filter('currency', currencyFilter);
+Vue.filter('date', dateFilter);
 
 // 把 cookie 的開關打開
 axios.defaults.withCredentials = true;

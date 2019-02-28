@@ -10,31 +10,35 @@
                 <tr>
                     <th>#</th>
                     <th width="120">購買時間</th>
+                    <th>訂單編號</th>
                     <th>Email</th>
-                    <th width="120">購買款項</th>
-                    <th width="120">應付金額</th>
-                    <th width="100">是否付款</th>
+                    <th width="80">應付金額</th>
+                    <th width="30" class="text-center">是否付款</th>
                     <th width="80" class="text-center">操作</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(item, key) in ordersData" :key="key">
                     <td>{{ key + 1 }}</td>
-                    <td>{{ item.create_at }}</td>
-                    <td>{{ item.user }}</td>
-                    <td class="text-right">
+                    <td>{{ item.create_at | date }}</td>
+                    <td>{{ item.id }}</td>
+                    <td>
+                        <div v-if="item.user">
+                            {{ item.user.email }}
+                        </div>
+                        <div v-else>no information</div>
+                    </td>
+                    <!-- <td class="text-right">
                         <ul>
                             <li v-for="(product, key) in item.products" :key="key">
                                 {{ product.product_id }}
                             </li>
                         </ul>
-                    </td>
-                    <td class="text-right">
-                        {{ item.total }}
-                    </td>
-                    <td>
-                        {{ item.is_paid }}
-                    </td>
+                    </td> -->
+                    <td class="text-right">{{ item.total | currency }}</td>
+                    <td class="text-center">
+                        <span class="text-success" v-if="item.is_paid"><i class="fas fa-check mr-1"></i>已付款</span>
+                        <span class="text-danger" v-else><i class="fas fa-times mr-1"></i>未付款</span>
                     <td>
                         <div class="btn icon-btn icon-btn-dark">
                             <i class="fas fa-pencil-alt" @click="openModal(item)"></i>
@@ -55,8 +59,9 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content border-0">
                     <div class="modal-header bg-dark text-white">
-                        <h5 class="modal-title" id="exampleModalLabel">
-                            <span>編輯編號:{{ tempOrder.id }}</span>
+                        <h5 class="modal-title d-flex w-100" id="exampleModalLabel">
+                            <span>明細</span>
+                            <span class="ml-auto">{{ tempOrder.id }}</span>
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -66,18 +71,10 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="create">建立日期</label>
-                                <input type="text" class="form-control" id="create" placeholder="建立日期" v-model="tempOrder.create_at">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="id">標題</label>
-                                <input type="text" class="form-control" id="id" placeholder="請輸入標題" v-model="tempOrder.id">
+                                <input type="text" class="form-control" id="create" placeholder="建立日期" :value="tempOrder.create_at | date" disabled>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="price">數量</label>
-                                <input type="unit" class="form-control" id="unit" placeholder="請輸入單位" v-model="tempOrder.num">
-                            </div>
                             <div class="form-group col-md-6">
                                 <label for="origin_price">訂單價錢</label>
                                 <input type="number" class="form-control" id="origin_price" placeholder="請輸入原價" v-model="tempOrder.total">
@@ -90,26 +87,29 @@
                             </div>
                         </div>
                         <hr>
-                        <!-- <h6 class="h6">訂購人資訊</h6>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="description">姓名</label>
-                                <input type="text" class="form-control" id="name" placeholder="請輸入訂購人資訊" v-if="tempOrder.user != 'undefined'" v-model="tempOrder.user.name">
+                        <h6 class="h6">訂購人資訊</h6>
+                        <div v-if="tempOrder.user">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="description">姓名</label>
+                                    <input type="text" class="form-control" id="name" placeholder="請輸入訂購人資訊" v-model="tempOrder.user.name">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="content">說明內容</label>
+                                    <textarea type="text" class="form-control" id="content" placeholder="請輸入產品說明內容"
+                                        v-model="tempOrder.content"></textarea>
+                                </div>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="content">說明內容</label>
-                                <textarea type="text" class="form-control" id="content" placeholder="請輸入產品說明內容" v-model="tempOrder.content"></textarea>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="is_enabled" v-model="tempOrder.is_enabled"
+                                        :true-value="1" :false-value="0">
+                                    <label class="form-check-label" for="is_enabled">
+                                        付款狀態
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="is_enabled" v-model="tempOrder.is_enabled"
-                                    :true-value="1" :false-value="0">
-                                <label class="form-check-label" for="is_enabled">
-                                    付款狀態
-                                </label>
-                            </div>
-                        </div> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
@@ -169,7 +169,7 @@
                 console.log('api_url', api);
 
                 this.$http.put(api, vm.tempOrder).then((res) => {
-                    console.log('api res:',res);
+                    console.log('api res:', res);
                     // if (res.data.success) {
                     //     // vm.isLoading = false;
                     //     vm.getOrders();
