@@ -76,6 +76,45 @@
                 </div>
 
                 <!-- 表單 -->
+                <form>
+                    {{ orderData.user.name }}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="username">姓名 Name</label>
+                            <input type="text" class="form-control" id="username" name="name" placeholder="請輸入姓名"
+                                v-model="orderData.user.name" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="usertel">電話 Phone</label>
+                            <input type="text" class="form-control" id="usertel" name="tel" placeholder="請輸入電話"
+                                v-model="orderData.user.tel" disabled>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="useremail">信箱 Email</label>
+                            <input type="email" class="form-control" id="useremail" placeholder="請輸入信箱" name="email"
+                                v-model="orderData.user.email" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="userpassword">會員密碼 Password</label>
+                            <input type="password" class="form-control" id="userpassword" placeholder="請輸入密碼" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="useraddress">地址 Address</label>
+                        <input type="text" class="form-control" id="useraddress" placeholder="請輸入地址" name="address"
+                            v-model="orderData.user.address" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="usermsg">留言</label>
+                        <textarea name="msg" id="usermsg" class="form-control" cols="30" rows="2"
+                            v-model="orderData.user.message" disabled></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-dark px-5">結帳去</button>
+                    </div>
+                </form>
                 
             </div>
         </div>
@@ -89,16 +128,17 @@
             return {
                 baseUrl: process.env.VUE_APP_IMGURL,
                 isLoading: false,
+                orderId: '',
 
                 // 訂單資訊
-                orderData: {}
+                orderData: {},
             }
         },
         methods: {
             // 取得訂單
-            getOrder(order_id) {
-                const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order/${order_id}`;
+            getOrder() {
                 const vm = this;
+                const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order/${vm.orderId}`;
                 vm.isLoading = true;
                 this.$http.get(api).then((res) => {
                     // console.log(res.data);
@@ -112,7 +152,8 @@
             }
         },
         created() {
-            this.getOrder('-LZmy_QCztOCr-4sqiJt');
+            this.orderId =  this.$route.params.orderId
+            this.getOrder();
         }
     }
 </script>
