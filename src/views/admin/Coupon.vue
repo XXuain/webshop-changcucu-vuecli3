@@ -1,7 +1,6 @@
 <template>
     <div>
         <loading :active.sync="isLoading"></loading>
-
         <div class="text-right mt-3">
             <button class="btn btn-dark" @click="openModal(true)"><i class="fas fa-plus mr-1"></i>建立優惠券</button>
         </div>

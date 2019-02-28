@@ -56,19 +56,6 @@ export default new Router({
         },
       ]
     },
-    // {
-    //   path: "/user",
-    //   name: "User",
-    //   component: () => import("./views/admin/Admin.vue"),
-    //   children: [
-    //     {
-    //       // 模擬訂單
-    //       path:'customer_order',
-    //       name: 'CustomerOrder',
-    //       component: () => import("./views/admin/CustomerOrder.vue"),
-    //     },
-    //   ]
-    // },
 
     /**
      * 前台 ---------------------------------------------------
@@ -101,6 +88,12 @@ export default new Router({
           path: "check_out",
           name: "CheckOut",
           component: () => import("./views/client/CheckOut.vue"),
+        },
+        {
+          // 確認訂單
+          path: "comfirm",
+          name: "Comfirm",
+          component: () => import("./views/client/Comfirm.vue"),
         }
       ]
     }

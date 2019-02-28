@@ -1,18 +1,23 @@
 <template>
   <div>
-    <form class="form-signin" @submit.prevent="signin">
-      <h1 class="h3 mb-3 font-weight-normal">登入</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" v-model="user.username" placeholder="Email address" required autofocus>
+    <div class="mt-4">
+      <form class="form-signin" @submit.prevent="signin">
+        <div class="text-center py-4">
+          <img :src="`${baseUrl}/img/logo.svg`" alt="" width="80">
+        </div>
+        <!-- <h1 class="h3 mb-3 font-weight-normal">登入</h1> -->
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" v-model="user.username" placeholder="Email address" required autofocus>
 
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" v-model="user.password" placeholder="Password" required>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" v-model="user.password" placeholder="Password" required>
 
-      <div class="checkbox mb-3">
-        <label><input type="checkbox" value="remember-me" class="mr-1">記住我</label>
-      </div>
-      <button class="btn btn-block btn-dark" type="submit">登入</button>
-    </form>
+        <div class="checkbox mb-3">
+          <label><input type="checkbox" value="remember-me" class="mr-1">記住我</label>
+        </div>
+        <button class="btn btn-block btn-dark" type="submit">登入</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -21,6 +26,7 @@ export default {
   name: "Login",
   data() {
       return {
+          baseUrl: process.env.VUE_APP_IMGURL,
           user: {
             username: '',
             password: ''

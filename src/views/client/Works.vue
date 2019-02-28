@@ -227,7 +227,6 @@
         created() {
             this.getProducts();
             // this.getCart();
-            this.$bus.$emit('messsage:push', 'test msg', 'success');
         }
     };
 </script>

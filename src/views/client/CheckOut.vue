@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container">
-            <div class="shopping-car mb-5">
+            <div class="shopping-car my-5">
                 <!-- 購物車 -->
                 <div class="row heading heading-2">
                     <div class="col-12">
@@ -11,8 +11,8 @@
                         <h2 class="h2 EN-font-family">SHOPPING CART</h2>
                     </div>
                 </div>
-                <!-- 購買清單 -->
 
+                <!-- 購買清單 -->
                 <table class="table">
                     <thead>
                         <tr>
@@ -92,8 +92,8 @@
                 </table>
             </div>
 
+            <!-- 客戶資訊 -->
             <div class="customer-information">
-                <!-- 客戶資訊 -->
                 <div class="row heading heading-2">
                     <div class="col-12">
                         <p class="display-4 subheading">客戶資訊</p>
@@ -108,7 +108,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="username">姓名 Name</label>
-                            <input type="text" class="form-control" id="username" placeholder="請輸入姓名"
+                            <input type="text" class="form-control" id="username" name="name" placeholder="請輸入姓名"
                                 v-model="form.user.name"
                                 v-validate="'required'"
                                 :class="{'is-invalid' : errors.has('name') }">
@@ -116,14 +116,14 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="usertel">電話 Phone</label>
-                            <input type="text" class="form-control" id="usertel" placeholder="請輸入電話"
+                            <input type="text" class="form-control" id="usertel" name="tel" placeholder="請輸入電話"
                                 v-model="form.user.tel">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="useremail">信箱 Email</label>
-                            <input type="email" class="form-control" id="useremail" placeholder="請輸入信箱"
+                            <input type="email" class="form-control" id="useremail" placeholder="請輸入信箱" name="email"
                                 v-model="form.user.email"
                                 v-validate="'required|email'"
                                 :class="{'is-invalid' : errors.has('email') }">
@@ -136,12 +136,12 @@
                     </div>
                     <div class="form-group">
                         <label for="useraddress">地址 Address</label>
-                        <input type="text" class="form-control" id="useraddress" placeholder="請輸入地址"
+                        <input type="text" class="form-control" id="useraddress" placeholder="請輸入地址" name="address"
                             v-model="form.user.address">
                     </div>
                     <div class="form-group">
                         <label for="usermsg">留言</label>
-                        <textarea name="" id="usermsg" class="form-control" cols="30" rows="2"
+                        <textarea name="msg" id="usermsg" class="form-control" cols="30" rows="2"
                             v-model="form.message"></textarea>
                     </div>
                     <div class="form-group">
@@ -182,6 +182,8 @@
                     },
                     message: ""
                 },
+
+                isLoading: false,
             }
         },
         methods: {
@@ -210,7 +212,6 @@
                     }
                 })
             },
-
             // 套用優惠碼
             addCouponCode() {
                 const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/coupon`;
@@ -226,30 +227,27 @@
                     }
                 })
             },
-
             // 建立訂單
             createOrder() {
                 const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order`;
                 const vm = this;
                 const order = vm.form;
                 vm.isLoading = true;
-                this.$http.post(api, { data:order }).then((res)=>{
-                    console.log('訂單已建立', res);
-                });
-                // this.$validator.validate().then((result) => {
-                //     if (result) {
-                //         this.$http.post(api, {
-                //             data: order
-                //         }).then((res) => {
-                //             console.log(res);
-                //             if (res.data.success) {
-                //                 console.log('訂單已成立', res.data);
-                //             }
-                //         })
-                //     } else {
-                //         console.log('欄位不完整');
-                //     }
-                // })
+                this.$validator.validate().then((result) => {
+                    console.log(result);
+                    if (result) {
+                        this.$http.post(api, {
+                            data: order
+                        }).then((res) => {
+                            console.log(res);
+                            if (res.data.success) {
+                                console.log('訂單已成立', res.data);
+                            }
+                        })
+                    } else {
+                        console.log('欄位不完整');
+                    }
+                })
             },
         },
         created() {

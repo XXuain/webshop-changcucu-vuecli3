@@ -85,14 +85,16 @@
             <form class="col-md-6" @submit.prevent="createOrder">
                 <div class="form-group">
                     <label for="useremail">Email</label>
-                    <input type="email" class="form-control" id="useremail" v-model="form.user.email"
+                    <input type="email" class="form-control" id="useremail" name="email"
+                        v-model="form.user.email"
                         v-validate="'required|email'" :class="{'is-invalid' : errors.has('email') }" placeholder="請輸入 Email">
                     <span class="text-danger">{{ errors.first('email') }}</span>
                 </div>
 
                 <div class="form-group">
                     <label for="username">收件人姓名</label>
-                    <input type="text" class="form-control" id="username" v-model="form.user.name"
+                    <input type="text" class="form-control" id="username" name="name"
+                        v-model="form.user.name"
                         v-validate="'required'" :class="{'is-invalid' : errors.has('name') }" placeholder="輸入姓名">
                     <span class="text-danger" v-if="errors.has('name')">必須輸入姓名</span>
                 </div>
@@ -279,15 +281,17 @@
                 const vm = this;
                 const order = vm.form;
                 this.$validator.validate().then((result) => {
+                    console.log(result);
                     if (result) {
-                        this.$http.post(api, {
-                            data: order
-                        }).then((res) => {
-                            console.log(res);
-                            if (res.data.success) {
-                                console.log('訂單已成立', res.data);
-                            }
-                        })
+                        console.log('欄位完整!!');
+                        // this.$http.post(api, {
+                        //     data: order
+                        // }).then((res) => {
+                        //     console.log(res);
+                        //     if (res.data.success) {
+                        //         console.log('訂單已成立', res.data);
+                        //     }
+                        // })
                     } else {
                         console.log('欄位不完整');
                     }
