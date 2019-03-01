@@ -75,46 +75,32 @@
                     </div>
                 </div>
 
-                <!-- 表單 -->
-                <form v-if="orderData.user">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="username">姓名 Name</label>
-                            <input type="text" class="form-control" id="username" name="name" placeholder="請輸入姓名"
-                                v-model="orderData.user.name" disabled>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="usertel">電話 Phone</label>
-                            <input type="text" class="form-control" id="usertel" name="tel" placeholder="請輸入電話"
-                                v-model="orderData.user.tel" disabled>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="useremail">信箱 Email</label>
-                            <input type="email" class="form-control" id="useremail" placeholder="請輸入信箱" name="email"
-                                v-model="orderData.user.email" disabled>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="userpassword">會員密碼 Password</label>
-                            <input type="password" class="form-control" id="userpassword" placeholder="請輸入密碼" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="useraddress">地址 Address</label>
-                        <input type="text" class="form-control" id="useraddress" placeholder="請輸入地址" name="address"
-                            v-model="orderData.user.address" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="usermsg">留言</label>
-                        <textarea name="msg" id="usermsg" class="form-control" cols="30" rows="2"
-                            v-model="orderData.user.message" disabled></textarea>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-block btn-dark px-5">結帳去</button>
-                    </div>
-                </form>
-                
+                <!-- 客戶資訊 表單 -->
+                <dl class="row" v-if="orderData.user">
+                    <dt class="col-sm-3">姓名 Name</dt>
+                    <dd class="col-sm-9">{{ orderData.user.name }}</dd>
+
+                    <dt class="col-sm-3">電話 Phone</dt>
+                    <dd class="col-sm-9">{{ orderData.user.tel }}</dd>
+
+                    <dt class="col-sm-3">信箱 Email</dt>
+                    <dd class="col-sm-9">{{ orderData.user.email }}</dd>
+
+                    <dt class="col-sm-3">地址 Address</dt>
+                    <dd class="col-sm-9">{{ orderData.user.address }}</dd>
+
+                    <dt class="col-sm-3">留言 Message</dt>
+                    <dd class="col-sm-9">{{ orderData.user.message }}</dd>
+
+                    <dt class="col-sm-3">付款狀態 Payment</dt>
+                    <dd class="col-sm-9">
+                        <span class="text-success" v-if="orderData.is_paid"><i class="fas fa-check mr-1"></i>已付款</span>
+                        <span class="text-danger" v-else><i class="far fa-circle mr-1"></i>未付款</span>
+                    </dd>
+                </dl>
+                <div class="text-center" v-if="!orderData.is_paid">
+                    <button class="btn btn-block btn-dark px-5" @click="payOrder">結帳去</button>
+                </div>
             </div>
         </div>
     </div>
@@ -148,10 +134,23 @@
                     }
                 })
 
+            },
+            // 結帳付款
+            payOrder() {
+                const vm = this;
+                const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/pay/${vm.orderId}`;
+                vm.isLoading = true;
+                this.$http.post(api).then((res) => {
+                    if (res.data.success) {
+                        vm.isLoading = false;
+                        vm.getOrder();
+                    }
+                    console.log('付款失敗');
+                })
             }
         },
         created() {
-            this.orderId =  this.$route.params.orderId
+            this.orderId = this.$route.params.orderId
             this.getOrder();
         }
     }
