@@ -96,32 +96,38 @@
                         <h5 class="modal-title display-3 text-center">購物車</h5>
                     </div>
                     <div class="modal-body">
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">品名</th>
-                                    <th scope="col" width="60" class="text-right">數量</th>
-                                    <th scope="col" width="100" class="text-right">金額</th>
-                                    <th scope="col" width="60" class="text-center">刪除</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(item, key) in cartData.carts" :key="key">
-                                    <td scope="row">{{ key + 1 }}</td>
-                                    <td>{{ item.product.title }}</td>
-                                    <td class="text-right">{{ item.qty }}</td>
-                                    <td class="text-right">{{ item.final_total | currency }}</td>
-                                    <td>
-                                        <div class="btn icon-btn icon-btn-danger">
-                                            <i class="fas fa-times" @click="removeCart(item.id)"></i>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="mt-3">
-                            <button type="button" class="btn btn-block btn-dark" @click="goCkeck">結帳去</button>
+                        <div v-if="cartData.carts && cartData.carts.length > 0">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">品名</th>
+                                        <th scope="col" width="60" class="text-right">數量</th>
+                                        <th scope="col" width="100" class="text-right">金額</th>
+                                        <th scope="col" width="60" class="text-center">刪除</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(item, key) in cartData.carts" :key="key">
+                                        <td scope="row">{{ key + 1 }}</td>
+                                        <td>{{ item.product.title }}</td>
+                                        <td class="text-right">{{ item.qty }}</td>
+                                        <td class="text-right">{{ item.final_total | currency }}</td>
+                                        <td>
+                                            <div class="btn icon-btn icon-btn-danger">
+                                                <i class="fas fa-times" @click="removeCart(item.id)"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="mt-3">
+                                <button type="button" class="btn btn-block btn-dark" @click="goCkeck">結帳去</button>
+                            </div>
+                        </div>
+                        <div class="bg-light text-center py-4" v-else>
+                            <h6 class="display-4">購物車是空的!</h6>
+                            <img :src="`${baseUrl}/img/icon-shopping-cart.svg`" width="100" alt="" class="mt-3">
                         </div>
                     </div>
                 </div>
@@ -172,10 +178,8 @@
                 const vm = this;
                 // vm.isLoading = true;
                 this.$http.get(api).then((res) => {
-                    // console.log(res.data);
                     if (res.data.success) {
                         console.log('getCart');
-                        // vm.isLoading = false;
                         vm.cartData = res.data.data;
                     }
                 })
@@ -185,7 +189,6 @@
                 const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${id}`;
                 const vm = this;
                 this.$http.delete(api).then((res) => {
-                    // console.log(res.data);
                     if (res.data.success) {
                         vm.getCart();
                     }

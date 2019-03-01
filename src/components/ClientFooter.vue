@@ -10,9 +10,9 @@
                         <a href="#" class="footer-nav-link">最新商品</a>
                     </div>
                     <div class="footer-nav">
-                        <a href="#" class="btn btn-dark footer-nav-btn">Facebook</a>
-                        <a href="#" class="btn btn-dark footer-nav-btn">Instagram</a>
-                        <a href="#" class="btn btn-dark footer-nav-btn">Shopee</a>
+                        <a href="#" class="btn btn-outline-dark footer-nav-btn">Facebook</a>
+                        <a href="#" class="btn btn-outline-dark footer-nav-btn">Instagram</a>
+                        <a href="#" class="btn btn-outline-dark footer-nav-btn">Shopee</a>
                     </div>
                     <div class="footer-nav">
                         <small>Copyright © 2019, .</small>

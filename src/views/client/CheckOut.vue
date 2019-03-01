@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loading :active.sync="isLoading"></loading>
         <div class="container">
             <div class="shopping-car my-5">
                 <!-- 購物車 -->
@@ -13,7 +14,7 @@
                 </div>
 
                 <!-- 購買清單 -->
-                <table class="table">
+                <table class="table" v-if="cartData.carts && cartData.carts.length > 0">
                     <thead>
                         <tr>
                             <th scope="col" width="60" class="text-center">刪除</th>
@@ -31,7 +32,6 @@
                                 </div>
                             </td>
                             <td scope="row">
-                                <!-- <img :src="`${baseUrl}/img/Purses/LongWallets/LW-01-1.png`" class="img-fluid" alt=""> -->
                                 <img :src="`${ item.product.imageUrl }`" class="img-fluid" alt="">
                             </td>
                             <td>
@@ -56,7 +56,6 @@
                                 </div>
                             </td>
                         </tr>
-
                         <!-- 折價券 -->
                         <tr>
                             <td></td>
@@ -90,10 +89,14 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="bg-light text-center py-5" v-else>
+                    <h6 class="display-4">購物車是空的!</h6>
+                    <img :src="`${baseUrl}/img/icon-shopping-cart.svg`" width="100" alt="" class="mt-3">
+                </div>
             </div>
 
             <!-- 客戶資訊 -->
-            <div class="customer-information">
+            <div class="customer-information" v-if="cartData.carts">
                 <div class="row heading heading-2">
                     <div class="col-12">
                         <p class="display-4 subheading">客戶資訊</p>
@@ -234,15 +237,17 @@
                 const order = vm.form;
                 vm.isLoading = true;
                 this.$validator.validate().then((result) => {
-                    console.log(result);
                     if (result) {
                         this.$http.post(api, {
                             data: order
                         }).then((res) => {
-                            console.log(res);
                             if (res.data.success) {
                                 console.log('訂單已成立', res.data);
+                            } else {
+                                console.log('錯誤：', res.data.message);
                             }
+                            vm.isLoading = false;
+                            vm.getCart();
                         })
                     } else {
                         console.log('欄位不完整');
