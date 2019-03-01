@@ -91,7 +91,7 @@ export default new Router({
         },
         {
           // 確認訂單
-          path: "comfirm/:orderId",
+          path: "comfirm/:orderId",
           name: "Comfirm",
           component: () => import("./views/client/Comfirm.vue"),
         }

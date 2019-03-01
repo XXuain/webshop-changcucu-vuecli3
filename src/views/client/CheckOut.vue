@@ -243,6 +243,7 @@
                         }).then((res) => {
                             if (res.data.success) {
                                 console.log('訂單已成立', res.data);
+                                vm.$router.push(`/comfirm/${res.data.orderId}`);
                             } else {
                                 console.log('錯誤：', res.data.message);
                             }

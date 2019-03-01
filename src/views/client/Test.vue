@@ -76,7 +76,7 @@
                 </div>
 
                 <!-- 表單 -->
-                <form v-if="orderData.user">
+                <!-- <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="username">姓名 Name</label>
@@ -111,9 +111,9 @@
                             v-model="orderData.user.message" disabled></textarea>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-block btn-dark px-5">結帳去</button>
+                        <button class="btn btn-dark px-5">結帳去</button>
                     </div>
-                </form>
+                </form> -->
                 
             </div>
         </div>
@@ -151,8 +151,8 @@
             }
         },
         created() {
-            this.orderId =  this.$route.params.orderId
-            this.getOrder();
+            // this.orderId =  this.$route.params.orderId
+            // this.getOrder();
         }
     }
 </script>
