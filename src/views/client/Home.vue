@@ -61,7 +61,7 @@
                       <a href="#">Hobo Bag</a>
                     </div>
                   </div>
-                  <img :src="`${baseUrl}/img/BarrelBag/HB-01-1.png`" class="img-fluid" alt="">
+                  <img :src="`${baseUrl}/img/home/HB-01-1.png`" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@
                       <a href="#">Hobo Bag</a>
                     </div>
                   </div>
-                  <img :src="`${baseUrl}/img/BarrelBag/HB-01-2.png`" class="img-fluid" alt="">
+                  <img :src="`${baseUrl}/img/home/HB-01-2.png`" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
