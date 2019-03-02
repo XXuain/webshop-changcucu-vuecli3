@@ -7,20 +7,17 @@
                 <li class="nav-item item-filter mx-3">
                     <a class="nav-link" href="#" :class="{ 'active' : navItem == 'All' }" @click.prevent="navItem = 'All'">全部<span>2</span></a>
                 </li>
-                <li class="nav-item item-filter mx-3">
-                    <a class="nav-link" href="#" :class="{ 'active' : navItem == 'LongWallets' }" @click.prevent="navItem = 'LongWallets'">長夾<span>2</span></a>
-                </li>
-                <li class="nav-item item-filter mx-3">
-                    <a class="nav-link" href="#" :class="{ 'active' : navItem == 'CoinPurse' }" @click.prevent="navItem = 'CoinPurse'">零錢包<span>2</span></a>
+                <li class="nav-item item-filter mx-3" v-for="(num, key) in countCategory" :key="key">
+                    <a class="nav-link" href="#" :class="{ 'active' : navItem == key }" @click.prevent="navItem = key">{{ CategoryName[key] }}<span>{{num}}</span></a>
                 </li>
                 <!-- <li class="nav-item item-filter mx-3">
-                    <a class="nav-link" href="#" :class="{ 'active' : navItem == '' }">隨身包<span>2</span></a>
+                    <a class="nav-link" href="#" :class="{ 'active' : navItem == 'CoinPurse' }" @click.prevent="navItem = 'CoinPurse'">零錢包<span>2</span></a>
                 </li>
                 <li class="nav-item item-filter mx-3">
-                    <a class="nav-link" href="#" :class="{ 'active' : navItem == '' }">手提袋<span>2</span></a>
+                    <a class="nav-link" href="#" :class="{ 'active' : navItem == 'CarryBag' }" @click.prevent="navItem = 'CarryBag'">隨身包<span>2</span></a>
                 </li>
                 <li class="nav-item item-filter mx-3">
-                    <a class="nav-link" href="#" :class="{ 'active' : navItem == '' }">配件<span>2</span></a>
+                    <a class="nav-link" href="#" :class="{ 'active' : navItem == 'WatchBand' }" @click.prevent="navItem = 'WatchBand'">錶帶<span>2</span></a>
                 </li> -->
             </ul>
 
@@ -32,7 +29,7 @@
                             <div class="portfolio-hover-content content-between">
                                 <div>
                                     <div class="portfolio-name">
-                                        <router-link to="works_detail" class="display-4">{{ item.title }}</router-link>
+                                        <router-link to="works_detail" class="display-3">{{ item.title }}</router-link>
                                     </div>
                                     <div class="portfolio-subname">
                                         <span>{{ item.description }}</span>
@@ -62,9 +59,16 @@
                 baseUrl: process.env.VUE_APP_IMGURL,
                 isLoading: false,
                 navItem: 'All',
+                CategoryName: {
+                    CarryBag:'隨身包',
+                    CoinPurse:'零錢包',
+                    LongWallets:'長夾',
+                    WatchBand:'錶帶',
+                },
 
                 // 產品
                 productsData: [],
+                countCategory: [],
                 pagination: {},
             }
         },
@@ -81,6 +85,18 @@
 
                         vm.productsData = res.data.products;
                         vm.pagination = res.data.pagination;
+                        
+                        var cate_count= [];
+
+                        vm.countCategory = vm.productsData.reduce(function (prev, item) {
+                            prev[item.category] = prev[item.category] || [];
+
+                            if(prev[item.category] == []){
+                                prev[item.category] = 0;
+                            }
+                            prev[item.category] ++;
+                            return prev;
+                        }, {});
                     }
                 })
             },
@@ -110,7 +126,7 @@
                     return vm.productsData;
                 } else if (vm.navItem == 'LongWallets') {
                     return vm.productsData.filter(item => item.category == vm.navItem);
-                    
+
                 } else if (vm.navItem == 'CoinPurse') {
                     return vm.productsData.filter(item => item.category == vm.navItem);
                     // let newData = [];
@@ -121,6 +137,10 @@
                     // });
                     // console.log(newData);
                     // return newData;
+                } else if (vm.navItem == 'CarryBag') {
+                    return vm.productsData.filter(item => item.category == vm.navItem);
+                } else if (vm.navItem == 'WatchBand') {
+                    return vm.productsData.filter(item => item.category == vm.navItem);
                 }
                 return [];
             }
