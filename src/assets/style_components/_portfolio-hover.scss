@@ -128,7 +128,7 @@
     margin-top: $spacer;
     span {
         font-family: 'Open Sans', sans-serif;
-        font-size: $font-size-base;
+        font-size: $font-size-base * 1.2;
         font-weight: 600;
         &.light {
             color: $white;

@@ -20,7 +20,9 @@
                             <div class="portfolio-hover-content content-between">
                                 <div>
                                     <div class="portfolio-name">
-                                        <router-link to="works_detail" class="display-3">{{ item.title }}</router-link>
+                                        <router-link :to="{ name: 'WorksDetail', params: { productId: item.id }}"
+                                            class="display-3">{{ item.title }}
+                                        </router-link>
                                     </div>
                                     <div class="portfolio-subname">
                                         <span>{{ item.description }}</span>

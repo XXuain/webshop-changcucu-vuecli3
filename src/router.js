@@ -79,7 +79,7 @@ export default new Router({
         },
         {
           // 作品項目
-          path: "works_detail",
+          path: "works_detail/:productId",
           name: "WorksDetail",
           component: () => import("./views/client/WorksDetail.vue"),
         },

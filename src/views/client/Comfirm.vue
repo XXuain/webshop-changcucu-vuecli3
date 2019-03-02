@@ -133,7 +133,6 @@
                         vm.orderData = res.data.order;
                     }
                 })
-
             },
             // 結帳付款
             payOrder() {
