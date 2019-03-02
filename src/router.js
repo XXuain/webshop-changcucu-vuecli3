@@ -73,8 +73,8 @@ export default new Router({
         },
         {
           // 作品列表
-          path:'works',
-          name: 'Works',
+          path: "works",
+          name: "Works",
           component: () => import("./views/client/Works.vue"),
         },
         {
