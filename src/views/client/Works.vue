@@ -3,10 +3,7 @@
         <loading :active.sync="isLoading"></loading>
         <div class="container">
             <!-- nav -->
-            <ul class="nav justify-content-center my-3">
-                <li class="nav-item item-filter mx-3">
-                    <a class="nav-link" href="#" :class="{ 'active' : navItem == 'All' }" @click.prevent="navItem = 'All'">全部<span>2</span></a>
-                </li>
+            <ul class="nav justify-content-center flex-row-reverse my-3">
                 <li class="nav-item item-filter mx-3" v-for="(num, key) in countCategory" :key="key">
                     <a class="nav-link" href="#" :class="{ 'active' : navItem == key }" @click.prevent="navItem = key">{{ CategoryName[key] }}<span>{{ num }}</span></a>
                 </li>
@@ -53,10 +50,11 @@
                 isLoading: false,
                 navItem: 'All',
                 CategoryName: {
-                    CarryBag:'隨身包',
-                    CoinPurse:'零錢包',
-                    LongWallets:'長夾',
-                    WatchBand:'錶帶',
+                    All: '全部',
+                    CarryBag: '隨身包',
+                    CoinPurse: '零錢包',
+                    LongWallets: '長夾',
+                    WatchBand: '錶帶',
                 },
 
                 // 產品
@@ -90,6 +88,10 @@
                             prev[item.category] ++;
                             return prev;
                         }, {});
+                        vm.countCategory['All'] = vm.productsData.length;
+                        // vm.countCategory.push({
+                        //     'All': vm.productsData.length
+                        // });
                     }
                 })
             },
@@ -119,17 +121,8 @@
                     return vm.productsData;
                 } else if (vm.navItem == 'LongWallets') {
                     return vm.productsData.filter(item => item.category == vm.navItem);
-
                 } else if (vm.navItem == 'CoinPurse') {
                     return vm.productsData.filter(item => item.category == vm.navItem);
-                    // let newData = [];
-                    // vm.productsData.forEach(element => {
-                    //     if(element.category == vm.navItem) {
-                    //         newData.push(element);
-                    //     }
-                    // });
-                    // console.log(newData);
-                    // return newData;
                 } else if (vm.navItem == 'CarryBag') {
                     return vm.productsData.filter(item => item.category == vm.navItem);
                 } else if (vm.navItem == 'WatchBand') {
