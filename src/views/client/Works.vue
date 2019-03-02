@@ -8,17 +8,8 @@
                     <a class="nav-link" href="#" :class="{ 'active' : navItem == 'All' }" @click.prevent="navItem = 'All'">全部<span>2</span></a>
                 </li>
                 <li class="nav-item item-filter mx-3" v-for="(num, key) in countCategory" :key="key">
-                    <a class="nav-link" href="#" :class="{ 'active' : navItem == key }" @click.prevent="navItem = key">{{ CategoryName[key] }}<span>{{num}}</span></a>
+                    <a class="nav-link" href="#" :class="{ 'active' : navItem == key }" @click.prevent="navItem = key">{{ CategoryName[key] }}<span>{{ num }}</span></a>
                 </li>
-                <!-- <li class="nav-item item-filter mx-3">
-                    <a class="nav-link" href="#" :class="{ 'active' : navItem == 'CoinPurse' }" @click.prevent="navItem = 'CoinPurse'">零錢包<span>2</span></a>
-                </li>
-                <li class="nav-item item-filter mx-3">
-                    <a class="nav-link" href="#" :class="{ 'active' : navItem == 'CarryBag' }" @click.prevent="navItem = 'CarryBag'">隨身包<span>2</span></a>
-                </li>
-                <li class="nav-item item-filter mx-3">
-                    <a class="nav-link" href="#" :class="{ 'active' : navItem == 'WatchBand' }" @click.prevent="navItem = 'WatchBand'">錶帶<span>2</span></a>
-                </li> -->
             </ul>
 
             <!-- work list -->
