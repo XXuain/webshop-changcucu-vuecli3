@@ -187,9 +187,7 @@
                 const vm = this;
                 vm.isLoading = true;
                 this.$http.get(api).then((res) => {
-                    // console.log(res.data);
                     if (res.data.success) {
-                        console.log('getCart');
                         vm.isLoading = false;
                         vm.cartData = res.data.data;
                     }
@@ -199,8 +197,8 @@
             removeCart(id) {
                 const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${id}`;
                 const vm = this;
+                vm.isLoading = true;
                 this.$http.delete(api).then((res) => {
-                    // console.log(res.data);
                     if (res.data.success) {
                         vm.getCart();
                     }
