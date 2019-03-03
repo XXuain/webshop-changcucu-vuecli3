@@ -32,11 +32,11 @@
                     <div class="client-navbar-nav">
                         <router-link to="works" class="client-navbar-nav-link">商品列表</router-link>
                         <a href="#" class="client-navbar-nav-link">訂製服務</a>
-                        <a href="#" class="client-navbar-nav-link">最新商品</a>
+                        <!-- <a href="#" class="client-navbar-nav-link">最新商品</a> -->
+                        <a href="#" class="client-navbar-nav-link" data-toggle="modal"
+                            data-target="#memberModal">會員登入</a>
                     </div>
                     <div class="client-navbar-text">
-                        <a href="#" class="client-navbar-text-link d-none d-lg-block mr-0" data-toggle="modal"
-                            data-target="#memberModal">會員登入</a>
                         <a href="#" class="btn btn-block btn-outline-dark d-lg-none mb-3" data-toggle="modal"
                             data-target="#memberModal">會員登入</a>
                         <router-link to="/login" class="client-navbar-text-link d-none d-lg-block mr-0">後台登入</router-link>
