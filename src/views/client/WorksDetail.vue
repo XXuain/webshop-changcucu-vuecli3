@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container">
-            
+
             <!-- work list -->
             <div class="portfolio-item-warp">
                 <div class="portfolio-title">
@@ -29,11 +29,11 @@
                             <div class="col-4 pr-0">
                                 <div class="input-group input-group-sm border border-dark h-100">
                                     <div class="input-group-prepend">
-                                        <button class="btn btn-outline-dark border-0" type="button">-</button>
+                                        <button class="btn btn-outline-dark border-0" type="button" @click="qtyCounter(0)">-</button>
                                     </div>
-                                    <input type="text" class="form-control h-100 border-0 text-center" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control h-100 border-0 text-center" :value="product.qty">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-dark border-0" type="button">+</button>
+                                        <button class="btn btn-outline-dark border-0" type="button" @click="qtyCounter(1)">+</button>
                                     </div>
                                 </div>
                             </div>
@@ -57,19 +57,21 @@
                 baseUrl: process.env.VUE_APP_IMGURL,
                 isLoading: false,
                 productId: '',
-                product: {}
+                product: {},
             }
         },
         methods: {
             // 取得細項
             getProductDetail() {
                 const vm = this;
-                const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${vm.productId}`;
+                const api =
+                    `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${vm.productId}`;
                 vm.isLoading = true;
                 this.$http.get(api).then((res) => {
-                    // console.log(res.data);
+                    console.log(res.data.product);
                     if (res.data.success) {
                         vm.product = res.data.product;
+                        vm.$set(vm.product, 'qty', 1);
                     }
                 })
             },
@@ -79,7 +81,7 @@
                 const vm = this;
                 const cart = {
                     'product_id': vm.product.id,
-                    qty
+                    'qty': vm.product.qty
                 };
                 // vm.status.loadingItem = id;
                 this.$http.post(api, {
@@ -90,6 +92,15 @@
                         // this.$bus.$emit('messsage:push', res.data.message, 'dark');
                     }
                 })
+            },
+            // 選擇數量
+            qtyCounter(status) {
+                const vm = this;
+                if(status == 0 && vm.product.qty >= 2) {
+                    vm.product.qty -= 1;
+                } else if (status == 1) {
+                    vm.product.qty += 1
+                }
             },
         },
         created() {

@@ -21,7 +21,7 @@
                             <th scope="col" width="120">圖示</th>
                             <th scope="col">品名</th>
                             <th scope="col" width="100" class="text-right">數量</th>
-                            <th scope="col" width="60" class="text-right">金額</th>
+                            <th scope="col" width="150" class="text-right">金額</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,17 +38,8 @@
                                 <h1 class="display-3">{{ item.product.title }}</h1>
                                 <span class="text-secondary">{{ item.product.description }}</span>
                             </td>
-                            <td>
-                                <div class="input-group input-group-sm border border-dark h-100">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-dark border-0" type="button">-</button>
-                                    </div>
-                                    <input type="text" class="form-control border-0 text-center" placeholder=""
-                                        aria-label="" aria-describedby="basic-addon1" :value="`${ item.qty }`">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-dark border-0" type="button">+</button>
-                                    </div>
-                                </div>
+                            <td align="right">
+                                {{ item.qty }}/{{ item.product.unit }}
                             </td>
                             <td align="right">
                                 <div class="portfolio-price mb-3">
