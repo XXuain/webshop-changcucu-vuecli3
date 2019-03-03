@@ -157,7 +157,7 @@
             </div>
           </div>
           <div class="col-md-6 px-md-0">
-            <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/CP-01-1.jpg');">
+            <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/CP-01-1.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
                   <a href="#" class="display-3">扁型零錢包</a>
@@ -170,7 +170,7 @@
             </div>
           </div>
           <div class="col-md-4 pl-md-0">
-            <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/CP-02-2.jpg');">
+            <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/CP-02-2.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
                   <a href="#" class="display-3">方型零錢包</a>
@@ -187,8 +187,8 @@
         <!-- 錶帶 -->
         <div class="row flex-column-reverse flex-md-row mb-4">
           <div class="col-md-4 pr-md-0">
-            <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/WB-01-3.png');
-                    background-position: top;">
+            <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/WB-01-3.png');
+                    background-position: top;`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
                   <a href="#" class="display-3">錶帶</a>
@@ -201,8 +201,8 @@
             </div>
           </div>
           <div class="col-md-6 px-md-0">
-            <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/WB-01-7.png');
-                    background-position: top;">
+            <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/WB-01-7.png');
+                    background-position: top;`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
                   <a href="#" class="display-3">錶帶</a>
