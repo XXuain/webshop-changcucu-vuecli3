@@ -13,12 +13,12 @@
             <div class="carousel-item active">
               <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="First slide">
             </div>
-            <!-- <div class="carousel-item">
-              <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="Second slide">
+            <div class="carousel-item">
+              <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-02.png`" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="Third slide">
-            </div> -->
+              <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-03.png`" alt="Third slide">
+            </div>
           </div>
           <a class="carousel-control-prev" href="#homeSlider" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
