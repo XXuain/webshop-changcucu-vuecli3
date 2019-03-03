@@ -113,10 +113,11 @@
             <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/LW-01-4.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <a href="#" class="display-3">零錢包長夾</a>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfBetIilW0IOEymvs' }}"
+                    class="display-3">零錢包長夾</router-link>
                 </div>
                 <div class="portfolio-subname">
-                  <a href="#">LW-01-4</a>
+                  <a href="#">[ LW-coinpurse-set ]</a>
                 </div>
               </div>
               <img :src="`${baseUrl}/img/home/LW-01-4.jpg`" class="img-fluid d-block d-md-none" alt="">
@@ -137,7 +138,7 @@
                   <a href="#" class="display-3">零錢包長夾</a>
                 </div>
                 <div class="portfolio-subname">
-                  <a href="#">LW-01-4</a>
+                  <a href="#">[ LW-coinpurse-set ]</a>
                 </div>
               </div>
               <img :src="`${baseUrl}/img/home/LW-01-2.jpg`" class="img-fluid d-block d-md-none" alt="">
@@ -150,7 +151,7 @@
           <div class="col-md-2 order-1 order-md-0 pr-md-0">
             <div class="d-flex align-items-center h-100 bg-white py-md-5 pl-4">
               <div class="my-5">
-                <p><small>零錢包 ></small></p>
+                <p class="mb-0"><small>零錢包 ></small></p>
                 <h3 class="h5">Coin purse</h3>
               </div>
             </div>
@@ -159,10 +160,10 @@
             <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/CP-01-1.jpg');">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <a href="#" class="display-3">水桶包</a>
+                  <a href="#" class="display-3">扁型零錢包</a>
                 </div>
                 <div class="portfolio-subname">
-                  <a href="#">Hobo Bag</a>
+                  <a href="#">[ CP-coin-purse ]</a>
                 </div>
               </div>
               <img :src="`${baseUrl}/img/home/CP-01-1.jpg`" class="img-fluid d-block d-md-none" alt="">
@@ -172,10 +173,10 @@
             <div class="bg-cover portfolio-hover" style="background-image: url('/img/home/CP-02-2.jpg');">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <a href="#" class="display-3">水桶包</a>
+                  <a href="#" class="display-3">方型零錢包</a>
                 </div>
                 <div class="portfolio-subname">
-                  <a href="#">Hobo Bag</a>
+                  <a href="#">[ CP-square ]</a>
                 </div>
               </div>
               <img :src="`${baseUrl}/img/home/CP-02-2.jpg`" class="img-fluid d-block d-md-none" alt="">
@@ -193,7 +194,7 @@
                   <a href="#" class="display-3">錶帶</a>
                 </div>
                 <div class="portfolio-subname">
-                  <a href="#">LW-01-4</a>
+                  <a href="#">[ WB-simple ]</a>
                 </div>
               </div>
               <img :src="`${baseUrl}/img/home/WB-01-3.png`" class="img-fluid d-block d-md-none" alt="">
@@ -207,7 +208,7 @@
                   <a href="#" class="display-3">錶帶</a>
                 </div>
                 <div class="portfolio-subname">
-                  <a href="#">LW-01-4</a>
+                  <a href="#">[ WB-simple ]</a>
                 </div>
               </div>
               <img :src="`${baseUrl}/img/home/WB-01-7.png`" class="img-fluid d-block d-md-none" alt="">
