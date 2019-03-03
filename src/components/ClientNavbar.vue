@@ -30,7 +30,7 @@
                         <img :src="`${baseUrl}/img/icon-search.svg`" width="15" alt="">
                     </div>
                     <div class="client-navbar-nav">
-                        <router-link to="works" class="client-navbar-nav-link">商品列表</router-link>
+                        <router-link to="/client/works" class="client-navbar-nav-link">商品列表</router-link>
                         <a href="#" class="client-navbar-nav-link">訂製服務</a>
                         <!-- <a href="#" class="client-navbar-nav-link">最新商品</a> -->
                         <a href="#" class="client-navbar-nav-link" data-toggle="modal"

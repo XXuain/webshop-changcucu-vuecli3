@@ -11,13 +11,16 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="First slide">
+              <img class="d-none d-md-block w-100" :src="`${baseUrl}/img/home/slide/slide-01.png`" alt="First slide">
+              <img class="d-block d-md-none w-100" :src="`${baseUrl}/img/home/slide/slide-01-mobil.png`" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-02.png`" alt="Second slide">
+              <img class="d-none d-md-block w-100" :src="`${baseUrl}/img/home/slide/slide-02.png`" alt="Second slide">
+              <img class="d-block d-md-none w-100" :src="`${baseUrl}/img/home/slide/slide-02-mobil.png`" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" :src="`${baseUrl}/img/home/slide/slide-03.png`" alt="Third slide">
+              <img class="d-none d-md-block w-100" :src="`${baseUrl}/img/home/slide/slide-03.png`" alt="Third slide">
+              <img class="d-block d-md-none w-100" :src="`${baseUrl}/img/home/slide/slide-03-mobil.png`" alt="Second slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#homeSlider" role="button" data-slide="prev">
@@ -55,10 +58,11 @@
                 <div class="portfolio-hover">
                   <div class="portfolio-hover-content content-center">
                     <div class="portfolio-name">
-                      <a href="#" class="display-3">水桶包</a>
+                      <router-link :to="{ name: 'WorksDetail', params: { productId: '-LZwRWkA0SgDyNU4DRta' }}" class="display-3">
+                        水桶包</router-link>
                     </div>
                     <div class="portfolio-subname">
-                      <a href="#">Hobo Bag</a>
+                      <a href="#">[ CB-hobo-bag ]</a>
                     </div>
                   </div>
                   <img :src="`${baseUrl}/img/home/HB-01-1.png`" class="img-fluid" alt="">
@@ -70,10 +74,11 @@
                 <div class="portfolio-hover">
                   <div class="portfolio-hover-content content-center">
                     <div class="portfolio-name">
-                      <a href="#" class="display-3">水桶包</a>
+                      <router-link :to="{ name: 'WorksDetail', params: { productId: '-LZwRWkA0SgDyNU4DRta' }}" class="display-3">
+                        水桶包</router-link>
                     </div>
                     <div class="portfolio-subname">
-                      <a href="#">Hobo Bag</a>
+                      <a href="#">[ CB-hobo-bag ]</a>
                     </div>
                   </div>
                   <img :src="`${baseUrl}/img/home/HB-01-2.png`" class="img-fluid" alt="">
@@ -100,7 +105,7 @@
             <ul class="nav justify-content-end">
               <li class="nav-item item-filter">
                 <router-link to="works" class="nav-link">
-                  全部<span>2</span>
+                  全部<span>9</span>
                 </router-link>
               </li>
             </ul>
@@ -135,7 +140,8 @@
             <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/LW-01-2.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <a href="#" class="display-3">零錢包長夾</a>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfBetIilW0IOEymvs' }}"
+                    class="display-3">零錢包長夾</router-link>
                 </div>
                 <div class="portfolio-subname">
                   <a href="#">[ LW-coinpurse-set ]</a>
@@ -160,7 +166,8 @@
             <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/CP-01-1.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <a href="#" class="display-3">扁型零錢包</a>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfBEV-YcnyKKMWJAG' }}"
+                    class="display-3">扁型零錢包</router-link>
                 </div>
                 <div class="portfolio-subname">
                   <a href="#">[ CP-coin-purse ]</a>
@@ -173,7 +180,8 @@
             <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/CP-02-2.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <a href="#" class="display-3">方型零錢包</a>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfApCzTLwj5eFjT85' }}"
+                    class="display-3">方型零錢包</router-link>
                 </div>
                 <div class="portfolio-subname">
                   <a href="#">[ CP-square ]</a>
@@ -191,7 +199,8 @@
                     background-position: top;`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <a href="#" class="display-3">錶帶</a>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LZwYUcvW4_GsB1LgbGr' }}"
+                    class="display-3">錶帶</router-link>
                 </div>
                 <div class="portfolio-subname">
                   <a href="#">[ WB-simple ]</a>
@@ -205,7 +214,8 @@
                     background-position: top;`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <a href="#" class="display-3">錶帶</a>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LZwYUcvW4_GsB1LgbGr' }}"
+                    class="display-3">錶帶</router-link>
                 </div>
                 <div class="portfolio-subname">
                   <a href="#">[ WB-simple ]</a>

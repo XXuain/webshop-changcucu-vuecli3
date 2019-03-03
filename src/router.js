@@ -61,37 +61,37 @@ export default new Router({
      * 前台 ---------------------------------------------------
      */
     {
-      path: "/client",
+      path: "",
       name: "Client",
       component: () => import("./views/client/Client.vue"),
       children: [
         {
           // 首頁
-          path: "home",
+          path: "/client/home",
           name: "Home",
           component: () => import("./views/client/Home.vue"),
         },
         {
-          // 作品列表
-          path: "works",
+          // 商品列表
+          path: "/client/works",
           name: "Works",
           component: () => import("./views/client/Works.vue"),
         },
         {
-          // 作品項目
-          path: "works_detail/:productId",
+          // 商品項目
+          path: "/client/works/:productId",
           name: "WorksDetail",
           component: () => import("./views/client/WorksDetail.vue"),
         },
         {
           // 結帳
-          path: "check_out",
+          path: "/client/check_out",
           name: "CheckOut",
           component: () => import("./views/client/CheckOut.vue"),
         },
         {
           // 確認訂單
-          path: "comfirm/:orderId",
+          path: "/client/comfirm/:orderId",
           name: "Comfirm",
           component: () => import("./views/client/Comfirm.vue"),
         }

@@ -3,7 +3,7 @@
         <!-- navbar -->
         <Alert/>
         <ClientNavbar />
-        <main class="has-navbar-fixed-top">
+        <main class="has-client-navbar-fixed-top">
             <router-view></router-view>
         </main>
         <!-- footer -->
