@@ -1,18 +1,20 @@
 /* eslint-disable */
 // 第三方套件
 import Vue from "vue";
+import vuex from 'vuex';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap';
-import VeeValidate from 'vee-validate';
+// import VeeValidate from 'vee-validate';
 import zhTWValidate from 'vee-validate/dist/locale/zh_TW';
-
+import VeeValidate, { Validator } from 'vee-validate';
 
 // 自行撰寫
 import App from "./App.vue";
 import router from "./router";
+import store from './store';
 import './bus';
 import currencyFilter from "./filters/currency";
 import dateFilter from "./filters/date";
@@ -20,8 +22,12 @@ import dateFilter from "./filters/date";
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
 
-Vue.use(VeeValidate);
-VeeValidate.Validator.localize('zh_TW', zhTWValidate);
+Vue.use(vuex);
+
+// Vue.use(VeeValidate);
+// VeeValidate.Validator.localize('zh_TW', zhTWValidate);
+Validator.localize('zh_TW',zhTWValidate);
+Vue.use(VeeValidate, { locale:'zh_TW',});
 
 // 啟用全域元件
 Vue.component('Loading', Loading);
@@ -36,6 +42,7 @@ axios.defaults.withCredentials = true;
 /* eslint-disable no-new */
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount("#app");
 

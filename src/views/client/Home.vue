@@ -1,5 +1,9 @@
 <template>
   <div>
+    <!-- Loading 畫面 -->
+    <!-- <transition name="fade">
+      <Loading v-if="isLoading"></Loading>
+    </transition> -->
     <!-- slider -->
     <section class="wrapper">
       <div class="slider">
@@ -89,7 +93,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- 作品列表 WORKS LIST -->
     <section class="wrapper wrapper-top bg-light pt-5">
       <div class="container py-5">
@@ -118,8 +122,7 @@
             <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/LW-01-4.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfBetIilW0IOEymvs' }}"
-                    class="display-3">零錢包長夾</router-link>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfBetIilW0IOEymvs' }}" class="display-3">零錢包長夾</router-link>
                 </div>
                 <div class="portfolio-subname">
                   <a href="#">[ LW-coinpurse-set ]</a>
@@ -140,8 +143,7 @@
             <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/LW-01-2.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfBetIilW0IOEymvs' }}"
-                    class="display-3">零錢包長夾</router-link>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfBetIilW0IOEymvs' }}" class="display-3">零錢包長夾</router-link>
                 </div>
                 <div class="portfolio-subname">
                   <a href="#">[ LW-coinpurse-set ]</a>
@@ -166,8 +168,7 @@
             <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/CP-01-1.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfBEV-YcnyKKMWJAG' }}"
-                    class="display-3">扁型零錢包</router-link>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfBEV-YcnyKKMWJAG' }}" class="display-3">扁型零錢包</router-link>
                 </div>
                 <div class="portfolio-subname">
                   <a href="#">[ CP-coin-purse ]</a>
@@ -180,8 +181,7 @@
             <div class="bg-cover portfolio-hover" :style="`background-image: url('${baseUrl}/img/home/CP-02-2.jpg');`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfApCzTLwj5eFjT85' }}"
-                    class="display-3">方型零錢包</router-link>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LWLfApCzTLwj5eFjT85' }}" class="display-3">方型零錢包</router-link>
                 </div>
                 <div class="portfolio-subname">
                   <a href="#">[ CP-square ]</a>
@@ -199,8 +199,7 @@
                     background-position: top;`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LZwYUcvW4_GsB1LgbGr' }}"
-                    class="display-3">錶帶</router-link>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LZwYUcvW4_GsB1LgbGr' }}" class="display-3">錶帶</router-link>
                 </div>
                 <div class="portfolio-subname">
                   <a href="#">[ WB-simple ]</a>
@@ -214,8 +213,7 @@
                     background-position: top;`">
               <div class="portfolio-hover-content content-center">
                 <div class="portfolio-name">
-                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LZwYUcvW4_GsB1LgbGr' }}"
-                    class="display-3">錶帶</router-link>
+                  <router-link :to="{ name: 'WorksDetail', params: { productId: '-LZwYUcvW4_GsB1LgbGr' }}" class="display-3">錶帶</router-link>
                 </div>
                 <div class="portfolio-subname">
                   <a href="#">[ WB-simple ]</a>
@@ -274,13 +272,27 @@
 
 <script>
   /* eslint-disable */
+  // import Loading from '@/components/Loading.vue';
 
   export default {
     name: "home",
+    // components: { Loading },
     data() {
       return {
         baseUrl: process.env.VUE_APP_IMGURL,
+        // isLoading: true,
       }
+    },
+    methods: {
+      // loadPage() {
+      //   const vm = this;
+      //   setTimeout(()=>{
+      //     // 判斷圖片全部載完
+      //     vm.isLoading = false }, 1000);
+      // }
+    },
+    mounted() {
+      // this.loadPage();
     }
   };
 </script>
