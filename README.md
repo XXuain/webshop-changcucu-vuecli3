@@ -1,154 +1,70 @@
-## 安裝vue cli3
+# 麤麤cucu 電商網頁
 
-#### step1. 安裝
-```
-npm install -g @vue/cli
-```
-#### step2. 查看版本
-```
-vue --version
-```
+![](https://xxuain.github.io/webshop-changcucu-vuecli3/dist/img/demo/home-1.png)
 
-## 創建&設定 專案
+## Demo
+[https://xxuain.github.io/webshop-changcucu-vuecli3/dist/#/client/home](https://xxuain.github.io/webshop-changcucu-vuecli3/dist/#/client/home)
 
-### 創建專案
-```
-vue create hello-world
-```
-### 專案設定檔
-#### step1. 選擇安裝方式
-```
-? Please pick a preset:
-  default (babel, eslint)
-❯ Manually select features  // 手動安裝設定檔
-```
+## 簡介
+為前端練習作品，目的為正式上線並串上籃新金流。
++ 前台: 所有商品、商品分類、以及商品細項展示，購物車功能、下單、結帳資訊、管理員登入等。
++ 後台: 商品管理（新增/修改/刪除）、訂單管理、優惠券管理。
 
-#### step2. 設定檔選項
-```
-? Check the features needed for your project: (Press <space> to select, <a> to toggle all, <i> to invert selection)
-❯◉ Babel          // 將ES6編譯成大部分瀏覽器可運行的程式碼
- ◯ TypeScript
- ◯ Progressive Web App (PWA) Support
- ◉ Router         // 安裝完後會自動產生view資料夾
- ◯ Vuex
- ◉ CSS Pre-processors
- ◉ Linter / Formatter
- ◯ Unit Testing
- ◯ E2E Testing
- ```
-#### step3. 選擇CSS的寫法
-```
-? Pick a CSS pre-processor (PostCSS, Autoprefixer and CSS Modules are supported by default): Sass/SCSS
-```
-#### step4. 選擇ESLink的規範
-```
-? Pick a linter / formatter config: (Use arrow keys)
-❯ ESLint with error prevention only  // 不嚴謹
-  ESLint + Airbnb config             // 最嚴謹 不建議初學
-  ESLint + Standard config           // 中級嚴謹
-  ESLint + Prettier                  // 自己建議自己的選項XD
-```
-#### step5. 錯誤提示位置
-```
-? Pick additional lint features: (Press <space> to select, <a> to toggle all, <i> to invert selection)
-❯◉ Lint on save                      // 儲存時顯示
- ◯ Lint and fix on commit
-```
-#### step6. 設定檔撰寫位置
-```
-? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? (Use arrow keys)
-  In dedicated config files          // 獨立檔案
-❯ In package.json                    // 都在package.json
-```
-#### step7. 是否儲存成創建預設
-```
-? Save this as a preset for future projects? (y/N)
-```
+### 主要練習
++ 前台 Bootstrap 自定義元件設計
++ RWD
++ VueCli3.0
++ VueRouter
++ Vuex
++ Webpack
++ axios 操作 API
++ Vue 自定義元件
 
-#### step8. 運行vue cli
-```
- $ cd webshop-changcucu-vuecli  // 進入專案資料夾
- $ npm run serve
-```
+## 前台內容介紹
+### loading 頁面
+自行撰寫 Loading 元件
+![](https://i.imgur.com/saYiiKX.png)
 
-### 依自己需求安裝套件
-#### step1. 安裝套件
-```
- $ npm install --save bootstrap jquery popper.js axios vue-axios vue-loading-overlay vee-validate
-```
-- `vue-loading-overlay` 讀取中效果
-- `vee-validate` 驗證
-｀
-#### step2. 載入套件
-進入 `src/main.js`
- ```
- import axios from 'axios';
- import VueAxios from 'vue-axios';
- import Loading from 'vue-loading-overlay';
- import 'vue-loading-overlay/dist/vue-loading.css';
- import 'bootstrap';
- ```
+### 商品列表
+最新上架的商品(由左至右)
+![](https://i.imgur.com/XRX4Kxm.png)
 
-### 新增常數檔.env
-- 新增`.env`
-- 寫法`VUE_APP_` + 自訂常數名稱
-- 取用方式`process.env.` + 自訂常數名稱
+### 商品分類過濾
+使用filter 將商品過濾出來
+![](https://i.imgur.com/9vJ7EUl.png)
 
-### 客製化bootstrap
-#### step1. 在`src/assets`裡新增`all.scss`
-#### step2. `all.scss` 依自己需求變化
-1. 複製`~bootstrap/scss/_variables.scss`到`src/assets`並載入
-2. 載入檔案：
-   - `@import '~bootstrap/scss/functions';`  // 變數設定
-   - `@import '~bootstrap/variables';`       // 自定義變數
-   - `@import '~bootstrap/scss/bootstrap';`  // 預設將所有元件先載入
-#### step3. 在`App.vue`引入`@import './assets/all'`
-#### 元件封裝樣式
-只有在該元件才會有的樣式 加上`scoped`
-```
-<style scoped>
-</style>
-```
+### 商品細項
+router帶入商品唯一ID，顯示單一商品詳細介紹，選擇數量加入購物車
+![](https://i.imgur.com/Zk1fd73.png)
 
-### 強制寫入
-https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
-使用`$set(要裝的容器, '裝進容器的key名稱', 內容)`
+### 購物車
+利用 vuex 達到元件同步更新資料
+![](https://i.imgur.com/fRPSwOK.png)
 
-### 讀取效果套件
-1. vue-loading-overlay
-https://github.com/ankurk91/vue-loading-overlay
-`<loading :active.sync="isLoading"></loading>`
-- isLoading = false 停用，反之
-  
-2. fontawesome
-https://fontawesome.com/how-to-use/on-the-web/styling/animating-icons
-- 使用`v-if`操作顯示隱藏
+### 結帳資訊
+顯示編輯購物車內容，使用折價券折扣商品金額
+![](https://i.imgur.com/iS2ShsA.png)
 
-### 錯誤訊息
-在元件內的錯誤訊息如果要傳到最外層去 需要傳很多層
-所以使用`vue event bus` 將 alert 掛載在vue原型下 並且直接操作vue原型來控制alert
+### 訂單資訊
+訂單成立後，router帶入訂單唯一ID，顯示訂單資訊
+![](https://i.imgur.com/kFEZYFH.png)
+
+### 送出訂單
+結帳後送出訂單，結帳狀態更改為已結帳
+![](https://i.imgur.com/GDCLHty.png)
+
+## 後台內容介紹
+商品基本新增刪功能
+![](https://i.imgur.com/Zlb50NP.png)
+
+## 使用外掛
++ [bootstrap](https://bootstrap.hexschool.com/)
++ [vue-axios](https://www.npmjs.com/package/vue-axios)
++ [swiper](http://idangero.us/swiper/)
++ [VeeValidate](https://baianat.github.io/vee-validate/)
 
 
------------
-
-2019/01/13
-登入成功後 使用vm.$router.push('/') 倒到首頁
-之後要講登出
-
-#### Compiles and minifies for production
-```
-npm run build
-```
-
-#### Run your tests
-```
-npm run test
-```
-
-#### Lints and fixes files
-```
-npm run lint
-```
-
-#### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+尚未完成
+vuex
+loading 頁面
+swiper 手機觸控輪播套件
