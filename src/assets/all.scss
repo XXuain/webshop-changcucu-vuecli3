@@ -106,6 +106,12 @@
     }
 }
 
+@media (max-width: 991px) {
+    .heading {
+        margin-bottom: $spacer * 1.5;
+    }
+}
+
 // 項目 nav
 .item-filter {
 

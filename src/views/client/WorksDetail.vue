@@ -11,19 +11,14 @@
                 <div class="row mb-4">
                     <div class="col-12 col-md-7">
                         <img :src="`${ product.imageUrl }`" class="img-fluid" alt="">
-                        <!-- <img :src="`${baseUrl}/img/Purses/LongWallets/LW-02-8.png`" class="img-fluid" alt=""> -->
                     </div>
-                    <div class="col-12 col-md-5 align-self-center">
-                        <div class="d-flex align-items-end mb-5">
+                    <div class="col-12 col-md-5 align-self-center mt-4 mt-md-0">
+                        <div class="d-flex align-items-end mb-3 mb-md-5">
                             <h1 class="display-3 mb-0 mr-2">{{ product.title }}</h1>
                             <span class="text-secondary">{{ product.description }}</span>
                         </div>
-                        <!-- <div class="d-flex mb-5">
-                            <span class="border p-1">訂製物</span>
-                        </div> -->
                         <div class="portfolio-price mb-3">
                             <span class="dark">{{ product.price | currency }}</span>
-                            <!-- <span class="oringin-price">NT$4,800</span> -->
                         </div>
                         <div class="form-row">
                             <div class="col-4 pr-0">
@@ -38,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="col pl-0">
-                                <button class="btn btn-dark h-100" @click="addtoCart">加入購物車</button>
+                                <button class="btn btn-block btn-dark h-100" @click="addtoCart">加入購物車</button>
                             </div>
                         </div>
                     </div>
@@ -96,7 +91,7 @@
             // 選擇數量
             qtyCounter(status) {
                 const vm = this;
-                if(status == 0 && vm.product.qty >= 2) {
+                if (status == 0 && vm.product.qty >= 2) {
                     vm.product.qty -= 1;
                 } else if (status == 1) {
                     vm.product.qty += 1
