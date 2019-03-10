@@ -41,6 +41,7 @@
 
 <script>
     /* eslint-disable */
+    import { mapGetters, mapActions } from 'vuex';
 
     export default {
         name: "works",
@@ -51,30 +52,14 @@
             }
         },
         methods: {
-            getProducts(page) {
-                this.$store.dispatch('getProducts', page);
-            },
-
             addtoCart(id, qty = 1) {
                 this.$store.dispatch('addtoCart', { id, qty });
             },
+
+            ...mapActions(['getProducts'])
         },
         computed: {
-            isLoading() {
-                return this.$store.state.isLoading;
-            },
-            productsData() {
-                return this.$store.state.productsData;
-            },
-            countCategory() {
-                return this.$store.state.countCategory;
-            },
-            CategoryName() {
-                return this.$store.state.CategoryName;
-            },
-            pagination() {
-                return this.$store.state.pagination;
-            },
+            ...mapGetters(['isLoading', 'productsData', 'countCategory', 'CategoryName', 'pagination']),
             productsDataFillter() {
                 const vm = this;
                 if (vm.navItem == 'All') {

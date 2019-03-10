@@ -2,6 +2,7 @@
 import Vue from "vue";
 import vuex from 'vuex';
 import axios from 'axios';
+import router from "./router";
 
 Vue.use(vuex);
 
@@ -132,5 +133,17 @@ export default new vuex.Store({
         CARTDATA(state, carts) {
             state.cartData = carts;
         }
+    },
+
+    /**
+     * 類似computed
+     * 
+     */
+    getters: {
+        isLoading: state => state.isLoading,
+        productsData: state => state.productsData,
+        countCategory: state => state.countCategory,
+        CategoryName: state => state.CategoryName,
+        pagination: state => state.pagination,
     }
 });
