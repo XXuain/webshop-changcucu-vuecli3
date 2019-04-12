@@ -26,7 +26,6 @@ export default new vuex.Store({
         cartData: {},
     },
 
-
     /**
      * 外部呼叫actions方法
      * this.$store.dispatch('updateLoading', false);
@@ -97,8 +96,8 @@ export default new vuex.Store({
     },
 
     /** 
-     * 操作資料狀態在mutations裡運作
-     * state:指向上方state
+     * 操作資料狀態在 mutations 裡運作
+     * state: 指向上方 state
     */ 
     mutations: {
         LOADING(state, status) {
@@ -137,7 +136,6 @@ export default new vuex.Store({
 
     /**
      * 類似computed
-     * 
      */
     getters: {
         isLoading: state => state.isLoading,

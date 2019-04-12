@@ -4,7 +4,8 @@
         <header class="wrapper">
             <nav class="client-navbar client-navbar-fixed-top" :class="{ 'show' : openNav }">
                 <div class="client-navbar-header">
-                    <a href="#" class="client-navbar-mobil-btn" :class="{ 'open' : openNav }" @click="openNav = !openNav">
+                    <a href="#" class="client-navbar-mobil-btn" :class="{ 'open' : openNav }"
+                        @click="openNav = !openNav">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -35,14 +36,16 @@
                             <span @click="openNav = !openNav">商品列表</span>
                         </router-link>
                         <a href="#" class="client-navbar-nav-link" @click.prevent="openNav = !openNav">訂製服務</a>
-                        <a href="#" class="client-navbar-nav-link" data-toggle="modal"
-                            data-target="#memberModal" @click="openNav = !openNav">會員登入</a>
+                        <a href="#" class="client-navbar-nav-link" data-toggle="modal" data-target="#memberModal"
+                            @click="openNav = !openNav">會員登入</a>
                     </div>
                     <div class="client-navbar-text">
                         <a href="#" class="btn btn-block btn-outline-dark d-lg-none mb-3" data-toggle="modal"
                             data-target="#memberModal" @click="openNav = !openNav">會員登入</a>
-                        <router-link to="/login" class="client-navbar-text-link d-none d-lg-block mr-0" @click="openNav = !openNav">後台登入</router-link>
-                        <router-link to="/login" class="btn btn-block btn-outline-dark d-lg-none mb-3" @click="openNav = !openNav">後台登入</router-link>
+                        <router-link to="/login" class="client-navbar-text-link d-none d-lg-block mr-0"
+                            @click="openNav = !openNav">後台登入</router-link>
+                        <router-link to="/login" class="btn btn-block btn-outline-dark d-lg-none mb-3"
+                            @click="openNav = !openNav">後台登入</router-link>
                     </div>
                 </div>
             </nav>
@@ -88,7 +91,8 @@
         </div>
 
         <!-- 購物車 Modal -->
-        <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalTitle" aria-hidden="true">
+        <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalTitle"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content p-3">
                     <div class="p-3">
